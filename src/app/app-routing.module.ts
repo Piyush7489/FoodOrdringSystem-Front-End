@@ -7,8 +7,8 @@ import { adminGuard } from './guard/admin.guard';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   
-  {path:'dashboard',component:AdminPortalComponent,
-  canActivate:[adminGuard],
+  {path:'admin',component:AdminPortalComponent,
+  
   children:[
   
   ]}

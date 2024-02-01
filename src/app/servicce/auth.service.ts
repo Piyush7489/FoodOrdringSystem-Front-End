@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiRoutes } from '../Utils/api-routes';
 import { AuthRequest } from '../Model/auth-request';
-
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,9 +10,9 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  public generateToken(request:AuthRequest)
+  public generateToken(request:AuthRequest):Observable<any>
   {
-    return this.http.post(ApiRoutes.GENERATE_TOKEN,request);
+    return this.http.post<any>(ApiRoutes.GENERATE_TOKEN,request);
   }
 
   loginUser(token:any)
@@ -45,5 +45,10 @@ export class AuthService {
   getToken()
   {
     return localStorage.getItem('token');
+  }
+
+  getCurrentUser():Observable<any>
+  {
+    return this.http.get<any>(ApiRoutes.GET_CURRENT_USER);
   }
 }

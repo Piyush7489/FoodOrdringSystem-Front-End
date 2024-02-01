@@ -6,5 +6,6 @@ export class ApiRoutes {
 
 
  public static GENERATE_TOKEN =this.BASE_URL+'/auth/login'
+ public static GET_CURRENT_USER = this.BASE_URL+'/auth/current-user'
     
 }
