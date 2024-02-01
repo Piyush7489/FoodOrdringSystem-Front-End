@@ -42,6 +42,5 @@ export class LoginComponent implements OnInit {
       this.service.getCurrentUser().subscribe((data)=>{})
       this.router.navigate([LoginComponent.Role]);
     })
-
  } 
 }
