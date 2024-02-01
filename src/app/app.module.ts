@@ -9,6 +9,7 @@ import { SideBarComponent } from './admin-panel/side-bar/side-bar.component';
 import { RightSideBarComponent } from './admin-panel/right-side-bar/right-side-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule }from '@angular/common/http'; 
+import { authInterceptorProviders } from './Utils/token.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,7 @@ import {HttpClientModule }from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

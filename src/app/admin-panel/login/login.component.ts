@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthRequest } from 'src/app/Model/auth-request';
 import { AuthService } from 'src/app/servicce/auth.service';
 
@@ -12,8 +13,8 @@ export class LoginComponent implements OnInit {
 
   loginForm!:FormGroup;
   authRequest: AuthRequest = new AuthRequest;
- 
-  constructor(private fb:FormBuilder,private service:AuthService){}
+  private static Role:any;
+  constructor(private fb:FormBuilder,private service:AuthService,private router:Router){}
   ngOnInit(): void {
     this.checkLoginFormValidation();
   }
@@ -36,9 +37,10 @@ export class LoginComponent implements OnInit {
   }
     this.service.generateToken(this.authRequest).subscribe((data:any)=>
     {
-      
+      LoginComponent.Role=data.role.toLowerCase();
       this.service.loginUser(data.token);
-      window.location.href='/dashboard'
+      this.service.getCurrentUser().subscribe((data)=>{})
+      this.router.navigate([LoginComponent.Role]);
     })
 
  } 
