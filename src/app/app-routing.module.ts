@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './admin-panel/login/login.component';
 import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.component';
-import { adminGuard } from './guard/admin.guard';
+import { LoginComponent } from './Comman-components/login/login.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},

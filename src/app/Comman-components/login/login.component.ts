@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthRequest } from 'src/app/Model/auth-request';
+import Toasts from 'src/app/Utils/Toast';
+import { CurrentUserResponse } from 'src/app/payload/Response/current-user-response';
 import { AuthService } from 'src/app/servicce/auth.service';
 
 @Component({
@@ -13,17 +16,29 @@ export class LoginComponent implements OnInit {
 
   loginForm!:FormGroup;
   authRequest: AuthRequest = new AuthRequest;
-  private static Role:any;
-  constructor(private fb:FormBuilder,private service:AuthService,private router:Router){}
+  private static ROLE : any;
+  user:CurrentUserResponse = new CurrentUserResponse;
+  constructor(private fb:FormBuilder,private service:AuthService,private router:Router,private snack:MatSnackBar){}
   ngOnInit(): void {
+    this.getUser()
     this.checkLoginFormValidation();
   }
 
-
+  getUser()
+  {
+    this.service.getCurrentUser().subscribe({
+      next:(data:any)=>{
+        LoginComponent.ROLE = data.message.userRole.toLowerCase()
+        if(this.service.getToken() != null){
+        this.router.navigate([LoginComponent.ROLE])
+    }        
+      }
+    })
+  }
+  
 
   checkLoginFormValidation()
   {
-    
        this.loginForm=this.fb.group({
         email:['',[Validators.required,Validators.email]],
         password:['',[Validators.required]],
@@ -31,17 +46,55 @@ export class LoginComponent implements OnInit {
   }
  formSubmit()
  {
+  localStorage.clear();
   this.loginForm.markAllAsTouched();
   if(!this.loginForm.valid){
     return;
   }
-    this.service.generateToken(this.authRequest).subscribe((data:any)=>
-    {
-      LoginComponent.Role=data.role.toLowerCase();
-      this.service.loginUser(data.token);
-      this.service.getCurrentUser().subscribe((data)=>{})
-      this.router.navigate([LoginComponent.Role]);
-    })
+    localStorage.clear();
+    this.trimValues(this.loginForm.value)
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value.email.trim()+"!!!");
+      this.service.generateToken(this.loginForm.value).subscribe(
+        (data: any) => {
+          localStorage.setItem('token', data.token);
+          Toasts.fire({
+            icon: 'success',
+            text: 'Login successfull...',
+            timer: 1500
+          })
+          //  alert(data.token)
+          this.service.loginUser(data.token);
+          this.service.getCurrentUser().subscribe(
+            (user:any) => {
+              this.user = user.message
+              this.user.userRole
+              // this.service.setUser(user.message);
+            });
+          LoginComponent.ROLE = data.role.toLowerCase()
+          setTimeout(() => {
+            this.router.navigate([LoginComponent.ROLE])
+          }, 1000);
+        },
+        (error: any) => {
+          this.snack.open("invailid Email or Password...!!", "☹️", {
+            duration: 3000
+          });
+          console.log(error);
 
- } 
+        }
+      )
+    }
+    else {
+      alert("ELSE")
+      // this.req.markFormGroupTouched(this.loginForm);
+    }
+  }
+
+  trimValues(data:any)
+  {
+    this.loginForm.value.email = data.email.trim()
+    this.loginForm.value.password = data.password.trim()
+  }
+
 }
