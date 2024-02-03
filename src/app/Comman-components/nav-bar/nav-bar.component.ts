@@ -24,7 +24,6 @@ export class NavBarComponent implements OnInit{
       next:(data:any)=>{
         this.currentUser = data.message
         this.imagePreview = ApiRoutes.IMAGE_URL+this.currentUser.profilePhoto
-        console.log(this.imagePreview);
       }
     })
   }
