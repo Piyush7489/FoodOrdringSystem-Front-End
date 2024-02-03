@@ -1,0 +1,17 @@
+.r-button {
+    width: 3rem;
+    height: 3rem;
+}
+
+@media screen and (max-width: 600px) {
+    .r-button {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.full-width
+{
+    width: 110%;
+    padding-right: 1rem;
+}

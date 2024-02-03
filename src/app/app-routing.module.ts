@@ -6,11 +6,12 @@ import { ViewRestaurantComponent } from './admin-panel/restaurant/view-restauran
 import { AdmindeshboardMainContentComponent } from './admin-panel/admindeshboard-main-content/admindeshboard-main-content.component';
 import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
 import { adminGuard } from './guard/admin.guard';
+import { SignupComponent } from './Comman-components/signup/signup.component';
 
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
- 
+ {path:'signup',component:SignupComponent},
  
   {path:'admin',component:AdminPortalComponent,
   canActivate:[adminGuard],

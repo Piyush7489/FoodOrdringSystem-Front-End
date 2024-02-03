@@ -19,6 +19,7 @@ import { SideBarComponent } from './admin-panel/side-bar/side-bar.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { adminGuard } from './guard/admin.guard';
+import { SignupComponent } from './Comman-components/signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { adminGuard } from './guard/admin.guard';
     RightSideBarComponent,
     ViewRestaurantComponent,
     AddCategoryComponent,
-    AdmindeshboardMainContentComponent
+    AdmindeshboardMainContentComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
