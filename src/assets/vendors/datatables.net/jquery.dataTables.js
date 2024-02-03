@@ -6512,7 +6512,7 @@
 			}
 	
 			if ( type == 'alert' ) {
-				alert( msg );
+				//alert( msg );
 			}
 			else if ( type == 'throw' ) {
 				throw new Error(msg);

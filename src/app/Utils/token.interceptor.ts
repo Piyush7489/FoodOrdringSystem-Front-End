@@ -6,33 +6,65 @@ import {
   HttpInterceptor,
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from '../servicce/auth.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private login:AuthService) {}
+  constructor(private login: AuthService, private router: Router) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let authReq = request;
-    const token=this.login.getToken();
-    console.log("inside interceptor...");
-    if(token!=null)
-    {
-      authReq=authReq.clone({
-        setParams:{Authorization:`${token}`}
+    const token = this.login.getToken();
+
+    if (token !== null) {
+      authReq = authReq.clone({
+        setParams: { Authorization: `${token}` }
       });
+     
     }
     
-    return next.handle(authReq);
+
+    console.log(authReq);
+
+    return next.handle(authReq).pipe(
+      catchError((error: any) => {
+      //  alert('hi')
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+        });
+
+        if (error.status === 401 || error.status === 0) {
+          //alert('hi')
+          if (this.login.isTokenExpired()) {
+            Toast.fire({
+              icon: 'error',
+              title: 'Session Expired  !!'
+            });
+         //   this.login.logout();
+            this.router.navigate(['login']);
+          }
+        }
+
+        console.error(error);
+        return throwError(() => error);
+      })
+    );
   }
 }
 
-export const authInterceptorProviders=[
+export const authInterceptorProviders = [
   {
-      provide:HTTP_INTERCEPTORS,
-      useClass:TokenInterceptor,
-      multi:true,
-  }
-]
+    // provide: [HTTP_INTERCEPTORS,NavbarComponent],
+    provide:HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,
+  },
+];

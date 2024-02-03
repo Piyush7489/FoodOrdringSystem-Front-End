@@ -3,6 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule }from '@angular/common/http'; 
+import { authInterceptorProviders } from './Utils/token.interceptor';
+import { NavBarComponent } from './Comman-components/nav-bar/nav-bar.component';
+import { RightSideBarComponent } from './Comman-components/right-side-bar/right-side-bar.component';
+import { SideBarComponent } from './Comman-components/side-bar/side-bar.component';
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginComponent } from './Comman-components/login/login.component';
+
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule }from '@angular/common/http'; 
@@ -21,8 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     AdminPortalComponent,
-    LoginComponent,
     NavBarComponent,
+    LoginComponent,
     SideBarComponent,
     RightSideBarComponent,
     ViewRestaurantComponent,
@@ -31,14 +42,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    MatSnackBarModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+   
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
     MatButtonModule
+
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.component';
+
 
 import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.component';
 
@@ -8,6 +10,7 @@ import { ViewRestaurantComponent } from './admin-panel/restaurant/view-restauran
 
 import { AdmindeshboardMainContentComponent } from './admin-panel/admindeshboard-main-content/admindeshboard-main-content.component';
 import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
+
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
