@@ -28,6 +28,7 @@ import { AdmindeshboardMainContentComponent } from './admin-panel/admindeshboard
 import { SideBarComponent } from './admin-panel/side-bar/side-bar.component';
 import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RightSideBarComponent,
     ViewRestaurantComponent,
     AddCategoryComponent,
-    AdmindeshboardMainContentComponent
+    AdmindeshboardMainContentComponent,
+    ViewAllCategoryComponent
   ],
   imports: [
     BrowserModule,
