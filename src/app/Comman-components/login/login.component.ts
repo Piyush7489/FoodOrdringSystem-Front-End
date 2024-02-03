@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
       this.service.generateToken(this.loginForm.value).subscribe(
         (data: any) => {
           localStorage.setItem('token', data.token);
+          localStorage.setItem('ROLE',data.role)
           Toasts.fire({
             icon: 'success',
             text: 'Login successfull...',
