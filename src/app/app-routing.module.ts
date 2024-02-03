@@ -7,12 +7,15 @@ import { AdmindeshboardMainContentComponent } from './admin-panel/admindeshboard
 import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
 
 import { adminGuard } from './guard/admin.guard';
+import { SignupComponent } from './Comman-components/signup/signup.component';
+
 import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
+
 
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
- 
+ {path:'signup',component:SignupComponent},
  
   {path:'admin',component:AdminPortalComponent,
   canActivate:[adminGuard],
