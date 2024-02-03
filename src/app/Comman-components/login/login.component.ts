@@ -64,13 +64,12 @@ export class LoginComponent implements OnInit {
             text: 'Login successfull...',
             timer: 1500
           })
-          //  alert(data.token)
           this.service.loginUser(data.token);
           this.service.getCurrentUser().subscribe(
             (user:any) => {
               this.user = user.message
               this.user.userRole
-              // this.service.setUser(user.message);
+            
             });
           LoginComponent.ROLE = data.role.toLowerCase()
           setTimeout(() => {
@@ -81,14 +80,14 @@ export class LoginComponent implements OnInit {
           this.snack.open("invailid Email or Password...!!", "☹️", {
             duration: 3000
           });
-          console.log(error);
+         
 
         }
       )
     }
     else {
       alert("ELSE")
-      // this.req.markFormGroupTouched(this.loginForm);
+      
     }
   }
 
