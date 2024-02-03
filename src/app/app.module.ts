@@ -19,7 +19,15 @@ import { SideBarComponent } from './admin-panel/side-bar/side-bar.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { adminGuard } from './guard/admin.guard';
+
 import { SignupComponent } from './Comman-components/signup/signup.component';
+
+
+import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +39,11 @@ import { SignupComponent } from './Comman-components/signup/signup.component';
     ViewRestaurantComponent,
     AddCategoryComponent,
     AdmindeshboardMainContentComponent,
+
     SignupComponent
+
+    ViewAllCategoryComponent
+
   ],
   imports: [
     BrowserModule,
