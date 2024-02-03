@@ -14,8 +14,8 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" routerLink="/admin/add-category" >Add Category</a></li>
-            <li class="nav-item"> <a class="nav-link" >View All Category</a></li>
+            <li class="nav-item"> <a class="nav-link" [routerLink]="'/admin/add-category'" >Add Category</a></li>
+            <li class="nav-item"> <a class="nav-link" [routerLink]="'/admin/view-category'">View All Category</a></li>
             
           </ul>
         </div>
@@ -28,7 +28,7 @@
         </a>
         <div class="collapse" id="form-elements">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" [routerLink]="'/view-restaurant'" >View All Restaurants</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="'/admin/view-restaurant'" >View All Restaurants</a></li>
             <li class="nav-item"><a class="nav-link">Verified Restaurants</a></li>
             <li class="nav-item"><a class="nav-link">UnVerified Restaurants</a></li>
             <li class="nav-item"><a class="nav-link"> Block Restaurants</a></li>
