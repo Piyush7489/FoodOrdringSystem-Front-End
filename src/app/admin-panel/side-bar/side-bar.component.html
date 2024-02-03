@@ -3,10 +3,10 @@
       <li class="nav-item">
         <a class="nav-link">
           <i class="icon-grid menu-icon"></i>
-          <span class="menu-title">Dashboard</span>
+          <span class="menu-title"  routerLink="/admin">Dashboard</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" >
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="icon-layout menu-icon"></i>
           <span class="menu-title">Category</span>
@@ -14,6 +14,7 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" routerLink="/admin/add-category" >Add Category</a></li>
             <li class="nav-item"> <a class="nav-link" >View All Category</a></li>
             
           </ul>
@@ -27,7 +28,7 @@
         </a>
         <div class="collapse" id="form-elements">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link">View All Restaurants</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="'/view-restaurant'" >View All Restaurants</a></li>
             <li class="nav-item"><a class="nav-link">Verified Restaurants</a></li>
             <li class="nav-item"><a class="nav-link">UnVerified Restaurants</a></li>
             <li class="nav-item"><a class="nav-link"> Block Restaurants</a></li>
