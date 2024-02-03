@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.component';
 
 
-import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.component';
-
 import { LoginComponent } from './Comman-components/login/login.component';
 import { ViewRestaurantComponent } from './admin-panel/restaurant/view-restaurant/view-restaurant.component';
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import Toasts from 'src/app/Utils/Toast';
 import { CategoryRequest } from 'src/app/payload/service-request/category-request';
 import { GlobalCategoryService } from 'src/app/servicce/global-category.service';
 
@@ -39,7 +40,12 @@ export class AddCategoryComponent implements OnInit{
     alert()
     this.service.AddCategory(this.categoryReq).subscribe((data:any)=>
     {
-      alert('success')
+      Toasts.fire({
+        icon: 'success',
+        text: data.message,
+        timer: 1500
+      })
+      this.router.navigate(['/admin/view-category']);
     })
   }
 }
