@@ -10,93 +10,45 @@
               <h4>New here?</h4>
               <!-- {{signupRequest|json}} -->
               <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-              <form class="pt-3" (ngSubmit)="signup()">
+              <form class="pt-3"  [formGroup]="signUpForm">
+                
                 <div class="form-group">
-                    <mat-form-field class="full-width" appearance="fill">
-                        <mat-label>First Name</mat-label>
-                        <input  
-                        [(ngModel)]="signupRequest.firstName"
-                        name="firstName"
-                        id="exampleInputUsername1"
-                        class="form-control form-control-lg"
-                        required
-                        matInput placeholder="First Name">
-                      </mat-form-field>
+                  <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="firstName" [(ngModel)]="signupRequest.firstName" placeholder="Enter firstName">
+                  <div  class="error" *ngIf="signUpForm.get('firstName')?.hasError('required') && signUpForm.get('firstName')?.touched">
+                    First Name is required.
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="lastName" [(ngModel)]="signupRequest.lastName" placeholder="Enter lastName">
+                    <div  class="error" *ngIf="signUpForm.get('lastName')?.hasError('required') && signUpForm.get('lastName')?.touched">
+                    Last Name is required.
+                    </div>
+                    </div>
+                <div class="form-group">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="email" [(ngModel)]="signupRequest.email" placeholder="Enter Email">
+                  <div  class="error" *ngIf="signUpForm.get('email')?.hasError('required') && signUpForm.get('email')?.touched">
+                    User Email is required.
+                  </div>
                 </div>
                 <div class="form-group">
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Last Name</mat-label>
-                        <input  
-                        [(ngModel)]="signupRequest.lastName"
-                        name="firstName"
-                        id="exampleInputUsername1"
-                        class="form-control form-control-lg"
-                        required
-                        matInput placeholder="Last Name">
-                      </mat-form-field>
-                  <!-- <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Last Name"> -->
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" formControlName="password" [(ngModel)]="signupRequest.password" placeholder="Enter Password">
+                  <div  class="error" *ngIf="signUpForm.get('password')?.hasError('required') && signUpForm.get('password')?.touched">
+                    Password is required.
+                  </div>
                 </div>
                 <div class="form-group">
-                    <mat-form-field id="exampleInputEmail1" class="full-width" appearance="outline">
-                        <mat-label>Email</mat-label>
-                        <input 
-                        class=" form-control form-control-lg"
-                        [(ngModel)]="signupRequest.email"
-                        name="email"
-                        type="email" matInput placeholder="Email">
-                        <!-- <mat-hint></mat-hint> -->
-                      </mat-form-field>
-                  <!-- <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email"> -->
-                </div>
-                <!-- <div class="form-group">
-                  <select class="form-control form-control-lg" id="exampleFormControlSelect2">
-                    <option>Country</option>
-                    <option>United States of America</option>
-                    <option>United Kingdom</option>
-                    <option>India</option>
-                    <option>Germany</option>
-                    <option>Argentina</option>
-                  </select>
-                </div> -->
-                <div class="form-group">
-
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Password*</mat-label>
-                        <input type="password" 
-                        [(ngModel)]="signupRequest.password"
-                        name="userpassword"
-                        id="exampleInputPassword1"
-                        class="form-control form-control-lg"
-                        matInput placeholder="Password">
-                        <!-- <div class="error-message" *ngIf="signupForm.get('password')?.hasError('required')&&signupForm.get('password')?.touched">Password is Required</div>  -->
-                      </mat-form-field>
-                  <!-- <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"> -->
-                </div>
-                <div class="form-group">
-
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Phone</mat-label>
-                        <input
-                        [(ngModel)]="signupRequest.mob"
-                        name="phone"
-                        class="form-control form-control-lg" id="exampleInputPassword1"
-                        type="tel" matInput placeholder="Phone" value="+91" maxlength="13">
-                        <mat-hint></mat-hint>
-                    </mat-form-field>
-                  <!-- <input type="tel" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Phone "> -->
-                </div>
-                <div class="form-group">
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Address</mat-label>
-                        <input
-                        [(ngModel)]="signupRequest.tempAddress"
-                        name="addr"
-                        class="form-control form-control-lg" id="exampleInputPassword1"
-                        type="text" matInput placeholder="City"  maxlength="13">
-                        <mat-hint></mat-hint>
-                    </mat-form-field>
-                </div>
-                <div class="form-group" >
+                  <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="mob" [(ngModel)]="signupRequest.mob" placeholder="Enter lastName">
+                  <div  class="error" *ngIf="signUpForm.get('mob')?.hasError('required') && signUpForm.get('mob')?.touched">
+                  Mobile is required.
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="tempAddress" [(ngModel)]="signupRequest.tempAddress" placeholder="Enter lastName">
+                    <div  class="error" *ngIf="signUpForm.get('tempAddress')?.hasError('required') && signUpForm.get('tempAddress')?.touched">
+                    Address  is required.
+                    </div>
+                    </div>
+                 <div class="form-group" >
                     <label style="font-size: 1rem;" class="label">
                         Signup as
                       </label>
@@ -105,7 +57,7 @@
                         <input type="radio"
                                class="rbtn example-radio-button"
                                [value]="'BOY'"
-                               name="role"
+                               formControlName="tempRole"
                                [(ngModel)]="signupRequest.tempRole"
                                /> Delivery Boy
                         <br>
@@ -113,7 +65,7 @@
                         <input type="radio"
                                class="rbtn example-radio-button"
                                [value]="'customer'"
-                               name="role"
+                               formControlName="tempRole"
                                [(ngModel)]="signupRequest.tempRole"
                                /> Customer
                         <br>
@@ -121,23 +73,20 @@
                         <input type="radio"
                                class="rbtn example-radio-button"
                                [value]="'owner'"
-                               name="role"
+                               formControlName="tempRole"
                                [(ngModel)]="signupRequest.tempRole"
                                /> Restaurant Owner
+                                        
                     </div>
+                    <div  class="error" *ngIf="signUpForm.get('tempRole')?.hasError('required') && signUpForm.get('tempRole')?.touched">
+                      Role  is required.
+                      </div>
                     
-                  
-                </div>
-                <div class="mb-4">
-                  <div class="form-check">
-                    <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input">
-                      I agree to all Terms & Conditions
-                    </label>
-                  </div>
-                </div>
+                </div> 
+              
                 <div class="mt-3">
-                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"  type="submit">SIGN UP</button>
+                
+                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" (click)="SubmitSignupForm()">SIGN IN</a>
                 </div>
                 <div class="text-center mt-4 font-weight-light">
                   Already have an account? <a routerLink="/login" class="text-primary">Login</a>
@@ -151,3 +100,5 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  
