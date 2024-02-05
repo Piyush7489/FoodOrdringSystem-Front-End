@@ -101,4 +101,10 @@ export class AuthService {
   {
     return localStorage.getItem('ROLE')
   }
+ 
+  public SignupForm(signup:any)
+  {
+    return this.http.post(ApiRoutes.SIGNUP,signup);
+  }
+
 }

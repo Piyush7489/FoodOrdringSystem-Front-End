@@ -9,6 +9,7 @@ import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.co
 
 
 
+
 import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
@@ -21,14 +22,33 @@ import { NavBarComponent } from './Comman-components/nav-bar/nav-bar.component';
 import { RightSideBarComponent } from './Comman-components/right-side-bar/right-side-bar.component';
 import { SignupComponent } from './Comman-components/signup/signup.component';
 import { authInterceptorProviders } from './Utils/token.interceptor';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule }from '@angular/common/http'; 
+import { authInterceptorProviders } from './Utils/token.interceptor';
+import { NavBarComponent } from './Comman-components/nav-bar/nav-bar.component';
+import { RightSideBarComponent } from './Comman-components/right-side-bar/right-side-bar.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoginComponent } from './Comman-components/login/login.component';
+import {MatButtonModule} from '@angular/material/button';
+import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AdmindeshboardMainContentComponent } from './admin-panel/admindeshboard-main-content/admindeshboard-main-content.component';
 import { ViewRestaurantComponent } from './admin-panel/restaurant/view-restaurant/view-restaurant.component';
 import { SideBarComponent } from './admin-panel/side-bar/side-bar.component';
 import { adminGuard } from './guard/admin.guard';
+
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatCardModule} from '@angular/material/card';
 import { VerifyOtpComponent } from './Comman-components/verify-otp/verify-otp.component';
 
+
+
+import { SignupComponent } from './Comman-components/signup/signup.component';
+import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
+import { OwnerportalComponent } from './owner/ownerportal/ownerportal.component';
+import { OwnerSideBarComponent } from './owner/owner-side-bar/owner-side-bar.component';
 
 
 @NgModule({
@@ -44,7 +64,13 @@ import { VerifyOtpComponent } from './Comman-components/verify-otp/verify-otp.co
     AdmindeshboardMainContentComponent,
     SignupComponent,
     ViewAllCategoryComponent,
+
     VerifyOtpComponent
+
+    OwnerportalComponent,
+    OwnerSideBarComponent,
+  
+
 
   ],
   imports: [
