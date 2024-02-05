@@ -16,4 +16,5 @@ public static IMAGE_URL= 'https://res.cloudinary.com/dxd4dtpvi/image/upload/v170
  //Admin Service
  public static GET_ALL_RESTAURANT= this.BASE_URL+'/admin/all';
  public static ADD_CATEGORY=this.BASE_URL+'/globalCategory/save';
+ public static SIGNUP =this.BASE_URL+'/auth/signup'
 }
