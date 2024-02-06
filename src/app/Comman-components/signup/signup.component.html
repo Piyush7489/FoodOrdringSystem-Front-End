@@ -7,19 +7,19 @@
               <div class="brand-logo">
                 <img src="assets/images/Logo(1).png" alt="logo">
               </div>
-              <h4>New here?</h4>
+              <h2>New here?</h2>
               <!-- {{signupRequest|json}} -->
-              <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+              <h4 class="font-weight-light">Signing up is easy. It only takes a few steps</h4>
               <form class="pt-3"  [formGroup]="signUpForm">
                 
                 <div class="form-group">
-                  <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="firstName" [(ngModel)]="signupRequest.firstName" placeholder="Enter firstName">
+                  <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="firstName" [(ngModel)]="signupRequest.firstName" placeholder="Enter First Name">
                   <div  class="error" *ngIf="signUpForm.get('firstName')?.hasError('required') && signUpForm.get('firstName')?.touched">
                     First Name is required.
                   </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="lastName" [(ngModel)]="signupRequest.lastName" placeholder="Enter lastName">
+                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="lastName" [(ngModel)]="signupRequest.lastName" placeholder="Enter Last Name">
                     <div  class="error" *ngIf="signUpForm.get('lastName')?.hasError('required') && signUpForm.get('lastName')?.touched">
                     Last Name is required.
                     </div>
@@ -37,13 +37,13 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="mob" [(ngModel)]="signupRequest.mob" placeholder="Enter lastName">
+                  <input type="number" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="mob" [(ngModel)]="signupRequest.mob" placeholder="Enter Mobile Number">
                   <div  class="error" *ngIf="signUpForm.get('mob')?.hasError('required') && signUpForm.get('mob')?.touched">
                   Mobile is required.
                   </div>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="tempAddress" [(ngModel)]="signupRequest.tempAddress" placeholder="Enter lastName">
+                    <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" formControlName="tempAddress" [(ngModel)]="signupRequest.tempAddress" placeholder="Enter City">
                     <div  class="error" *ngIf="signUpForm.get('tempAddress')?.hasError('required') && signUpForm.get('tempAddress')?.touched">
                     Address  is required.
                     </div>
@@ -64,7 +64,7 @@
                     
                         <input type="radio"
                                class="rbtn example-radio-button"
-                               [value]="'customer'"
+                               [value]="'CUSTOMER'"
                                formControlName="tempRole"
                                [(ngModel)]="signupRequest.tempRole"
                                /> Customer
@@ -72,14 +72,14 @@
                     
                         <input type="radio"
                                class="rbtn example-radio-button"
-                               [value]="'owner'"
+                               [value]="'OWNER'"
                                formControlName="tempRole"
                                [(ngModel)]="signupRequest.tempRole"
                                /> Restaurant Owner
                                         
                     </div>
                     <div  class="error" *ngIf="signUpForm.get('tempRole')?.hasError('required') && signUpForm.get('tempRole')?.touched">
-                      Role  is required.
+                      Choose at least one Role.
                       </div>
                     
                 </div> 

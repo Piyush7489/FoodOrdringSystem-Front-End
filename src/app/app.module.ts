@@ -9,20 +9,6 @@ import { AdminPortalComponent } from './admin-panel/admin-portal/admin-portal.co
 
 
 
-
-import { AddCategoryComponent } from './admin-panel/Category/add-category/add-category.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoginComponent } from './Comman-components/login/login.component';
-import { NavBarComponent } from './Comman-components/nav-bar/nav-bar.component';
-import { RightSideBarComponent } from './Comman-components/right-side-bar/right-side-bar.component';
-import { SignupComponent } from './Comman-components/signup/signup.component';
-import { authInterceptorProviders } from './Utils/token.interceptor';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule }from '@angular/common/http'; 
 import { authInterceptorProviders } from './Utils/token.interceptor';
@@ -49,6 +35,7 @@ import { SignupComponent } from './Comman-components/signup/signup.component';
 import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
 import { OwnerportalComponent } from './owner/ownerportal/ownerportal.component';
 import { OwnerSideBarComponent } from './owner/owner-side-bar/owner-side-bar.component';
+import { UpdateUserComponent } from './Comman-components/update-user/update-user.component';
 
 
 @NgModule({
@@ -64,11 +51,10 @@ import { OwnerSideBarComponent } from './owner/owner-side-bar/owner-side-bar.com
     AdmindeshboardMainContentComponent,
     SignupComponent,
     ViewAllCategoryComponent,
-
-    VerifyOtpComponent
-
+    VerifyOtpComponent,
     OwnerportalComponent,
     OwnerSideBarComponent,
+    UpdateUserComponent,
   
 
 

@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Toasts from 'src/app/Utils/Toast';
+import { EmailRequest } from 'src/app/payload/service-request/email-request';
 import { SignupRequest } from 'src/app/payload/service-request/signup-request';
 import { AuthService } from 'src/app/servicce/auth.service';
+import { SignupService } from 'src/app/servicce/signup.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -13,11 +16,24 @@ import { AuthService } from 'src/app/servicce/auth.service';
 export class SignupComponent implements OnInit{
   signupRequest:SignupRequest = new SignupRequest;
   signUpForm !: FormGroup
-  constructor(private service:AuthService,private fb:FormBuilder,private router:Router){}
+  emailData: EmailRequest = new EmailRequest;
+  constructor(private service:AuthService,private fb:FormBuilder,private router:Router,private signup:SignupService){}
   ngOnInit(): void {
+    this.getUser()
     this.checkSignupFormValidation();
   }
  
+  getUser()
+  {
+    this.service.getCurrentUser().subscribe({
+      next:(data:any)=>{
+        // LoginComponent.ROLE = data.message.userRole.toLowerCase()
+        if(this.service.getToken() != null){
+        this.router.navigate([data.message.userRole.toLowerCase()])
+    }        
+      }
+    })
+  }
 
   checkSignupFormValidation()
   {
@@ -40,25 +56,21 @@ export class SignupComponent implements OnInit{
     {
       return;
     }
-    this.service.SignupForm(this.signupRequest).subscribe(
-      (data:any)=>
-    {
-      Toasts.fire({
-        icon: 'success',
-        text: data.message,
-        timer: 1500
-      })
-    this.router.navigate(['/login']);
-    },(error:any)=>
-    {
-      {
+   
+    this.emailData.sendTo = this.signupRequest.email.trim()
+    this.signup.sendEmail(this.emailData).subscribe(
+      (data: any) => {
+        localStorage.setItem('fakeUser', JSON.stringify(this.signupRequest))
+        Swal.fire("Success", "OTP Successfully sent on " + this.signupRequest.email, 'success')
+        this.router.navigate(['verify-otp'])
+      },
+      (error: any) => {
         Toasts.fire({
-          icon: 'success',
-          text: error.error.msg,
-          timer: 1500
+          icon:'info',
+          text:error.error.error,
+          timer:1000
         })
-       this.router.navigate(['/signup']); 
-    } 
-  })
+      }
+    )
   }
 }
