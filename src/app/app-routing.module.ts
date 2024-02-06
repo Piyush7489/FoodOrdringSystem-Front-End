@@ -12,12 +12,16 @@ import { SignupComponent } from './Comman-components/signup/signup.component';
 
 import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
 import { OwnerportalComponent } from './owner/ownerportal/ownerportal.component';
+import { VerifyOtpComponent } from './Comman-components/verify-otp/verify-otp.component';
+import { otpGuard } from './guard/otp.guard';
+import { authGuard } from './guard/auth.guard';
 
 
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
  {path:'signup',component:SignupComponent},
+ {path:'verify-otp',component:VerifyOtpComponent,canActivate:[otpGuard]},
  
   {path:'admin',component:AdminPortalComponent,
     canActivate:[adminGuard],
