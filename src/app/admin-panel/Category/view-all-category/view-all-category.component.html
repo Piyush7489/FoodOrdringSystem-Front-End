@@ -1,1 +1,82 @@
-<p>view-all-category works!</p>
+
+     <div class="container" id="content">
+    
+      <table class="table">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of PaginatedData; let i=index">
+                  <th scope="row">{{i}}</th>
+                  <td>{{item.catName}}</td>
+                  <td>{{item.catDescription}}</td>
+                 
+                  <td>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="toggleSwitch" [(ngModel)]="item.isActive" (ngModelChange)="toggleStatus(item.catId,item.isActive)">
+                      <label class="form-check-label" for="toggleSwitch">
+                        <!-- {{ item.isActive ? 'Active' : 'Inactive' }} -->
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                      <button type="button" class="btn btn-success custom-indigo-button custom-btn-size" (click)="openUpdateModal(item)">
+                        <i class="bi bi-pencil custom-icon-size"></i> <!-- Bootstrap Icon for Delete -->
+                    </button>
+                      <button type="button" class="btn btn-danger custom-btn-size"  (click)="deleteCategory(item.catId)">
+                          <i class="bi bi-trash custom-icon-size"></i> <!-- Bootstrap Icon for Delete -->
+                      </button>
+                     
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <app-pagination [totalItem]="length" [itemPerPage]="itemPerPage" [currentpage]="currentpage" (onClick)="changePage($event)"></app-pagination>
+  </div>
+  
+  <!-- Modal for updating category -->
+  <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="updateModalLabel">Update Category</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+              </div>
+              <form [formGroup]="categoryForm" >
+              <div class="modal-body" >
+                  <!-- Form fields for updating category -->
+
+                       <div class="mb-3">
+                      <label for="updateCatName" class="form-label">Category Name</label>
+                      <input type="text" class="form-control" id="updateCatName" formControlName="catName" [(ngModel)]="catResponse.catName">
+                      <div class="error" *ngIf="categoryForm.get('catName')?.hasError('required') && categoryForm.get('catName')?.touched">
+                        Category name is required.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="updateCatDescription" class="form-label">Category Description</label>
+                      <textarea class="form-control" id="updateCatDescription"  formControlName="catDescription" [(ngModel)]="catResponse.catDescription" rows="3"></textarea>
+                      <div class="error" *ngIf="categoryForm.get('catDescription')?.hasError('required') && categoryForm.get('catDescription')?.touched">
+                        Category name is required.
+                    </div>
+                  </div>
+                  
+                
+                
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" (click)="saveChanges()">Save changes</button>
+              </div>
+            </form>
+          </div>
+      </div>
+  </div>
+  
+  

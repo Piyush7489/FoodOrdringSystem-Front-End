@@ -1,0 +1,18 @@
+.custom-indigo-button {
+    background-color: #7742cd; /* Use the color code for indigo-500 */
+    border-color: #7137d0; /* Optionally, set border color if needed */
+    /* Add any additional styles as needed */
+}
+.custom-icon-size {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+}
+.custom-btn-size {
+    font-size: 0.8rem; /* Adjust the font size as needed */
+    padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+}
+
+
+.blur-background {
+    filter: blur(5px); /* Adjust the blur amount as needed */
+    pointer-events: none; /* Allow clicks to pass through */
+}

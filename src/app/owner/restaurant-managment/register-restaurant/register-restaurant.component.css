@@ -1,0 +1,86 @@
+/* Custom Styles */
+.custom-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(100% - 30px);/* Adjust the width as needed */
+    margin-left: auto; /* Center the form horizontally */
+    margin-right: auto;
+}
+
+.category-checkboxes {
+    margin-top: 5px;
+}
+
+.category-option {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.category-option input[type="checkbox"] {
+    display: none;
+}
+
+.category-option span {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+}
+
+.category-option span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.category-option input[type="checkbox"]:checked + span:before {
+    content: "\2713";
+    font-size: 14px;
+    color: #007bff;
+    text-align: center;
+    line-height: 18px;
+    background-color: #fff;
+    border-color: #007bff;
+}
+/* Custom Styles for Labels */
+label {
+    color: #333; /* Set label text color */
+    font-size: 16px; /* Set label font size */
+    font-weight: bold; /* Make label text bold */
+    margin-bottom: 5px; /* Add space below each label */
+}
+
+/* Custom Styles for Form Inputs */
+.form-control {
+    border-radius: 5px; /* Add border radius to form inputs */
+    border: 1px solid #ccc; /* Add border to form inputs */
+}
+
+/* Custom Styles for Buttons */
+.btn {
+    background-color: #007bff; /* Set button background color */
+    color: #fff; /* Set button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Add border radius to buttons */
+    padding: 10px 20px; /* Add padding to buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Add smooth transition on background color change */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Change button background color on hover */
+}
+.category-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-option {
+    margin-right: 20px;
+    margin-bottom: 10px;
+}

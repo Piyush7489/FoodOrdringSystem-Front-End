@@ -1,0 +1,16 @@
+
+<nav>
+    <ul class="pagination">
+        <li class="page-item "  style="cursor: pointer;" [ngClass]="{disabled:currentpage===0}" >
+            <a class="page-link" (click)="pageClicked(currentpage-1)">Previous</a>
+        </li>
+        <li
+        (click)="pageClicked(page)"
+         *ngFor="let page of pages" class="page-item" [ngClass]="{'active':page==currentpage}"><a class="page-link" href="javascript:void(0)">{{page+1}}</a></li>
+   
+   <li class="page-item" [ngClass]="{disabled:currentpage+1==totalPage}"  style="cursor: pointer;">
+    <a class="page-link"  (click)="pageClicked(currentpage+1)">Next</a>
+   </li>
+</ul>
+
+  </nav>

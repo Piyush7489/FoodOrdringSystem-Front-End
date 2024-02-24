@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Toasts from 'src/app/Utils/Toast';
 import { Constants } from 'src/app/Utils/constants';
 import { CheckOtpRequest } from 'src/app/payload/service-request/check-otp-request';
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
 })
 export class VerifyOtpComponent implements OnInit {
 
-  constructor(private signup: SignupService) { }
+  constructor(private signup: SignupService,private router:Router) { }
   signupRequest: SignupRequest = new SignupRequest
   timer: number = Constants.RESENT_OTP_TIME;
   reSendOtp = false
@@ -44,20 +45,16 @@ export class VerifyOtpComponent implements OnInit {
   submit() {
     this.getUserDetails()
     this.cor.email = this.signupRequest.email
-    // this.cor.otp = this.inputOTP
     this.signup.checkOtp(this.cor).subscribe({
       next: (response: any) => {
         if (response.message) {
           
-          if (this.signupRequest.tempRole === Constants.OWNER) {
+          
+           if (this.signupRequest.tempRole === Constants.BOY) {
             this.toastMessage()
-            alert('owner')
+           this.router.navigate(['/boy-document-registration'])
           }
-          else if (this.signupRequest.tempRole === Constants.BOY) {
-            this.toastMessage()
-            alert("BOY")
-          }
-          else {
+          else  {
             this.signup.addUser(this.signupRequest).subscribe({
               next:(response:any)=>{
                 localStorage.clear()
@@ -66,6 +63,7 @@ export class VerifyOtpComponent implements OnInit {
                   text:response.message,
                   timer:3000
                 })
+                this.router.navigate(['login'])
               },error:(error:any)=>{
                 Toasts.fire({
                   icon:'success',

@@ -8,21 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class adminGuard implements CanActivate {
   constructor(private login:AuthService,private router:Router){}
-  // canActivate(
-  //   _route: ActivatedRouteSnapshot, 
-  //   _state: RouterStateSnapshot): 
-  //   boolean | UrlTree | Observable<boolean | UrlTree> 
-  //   | Promise<boolean | UrlTree> {
-    
-  //     if(this.login.isLoggedIn() && (this.login.getUserRole()=="ADMIN"))
-  //     {
-  //       alert("true")
-  //       return true
-  //     }
-  //     alert("False")
-  //     this.router.navigate(['login'])
-  //     return false;
-  // }
+  
 
   canActivate(): boolean {
     

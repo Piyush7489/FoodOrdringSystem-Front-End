@@ -30,12 +30,26 @@ import {MatCardModule} from '@angular/material/card';
 import { VerifyOtpComponent } from './Comman-components/verify-otp/verify-otp.component';
 
 
-
+import {MatIconModule} from '@angular/material/icon';
 import { SignupComponent } from './Comman-components/signup/signup.component';
 import { ViewAllCategoryComponent } from './admin-panel/Category/view-all-category/view-all-category.component';
 import { OwnerportalComponent } from './owner/ownerportal/ownerportal.component';
 import { OwnerSideBarComponent } from './owner/owner-side-bar/owner-side-bar.component';
 import { UpdateUserComponent } from './Comman-components/update-user/update-user.component';
+import { ForgetPasswordComponent } from './Comman-components/forget-password/forget-password.component';
+import { HOMEComponent } from './Comman-components/home/home.component';
+import { BoydocumentComponent } from './boy-document-registration/boydocument/boydocument.component';
+import { PaginationComponent } from './Comman-components/pagination/pagination/pagination.component';
+import { OenerPanelMaincontentComponent } from './owner/oener-panel-maincontent/oener-panel-maincontent.component';
+import { ownerGuard } from './guard/owner-guard.guard';
+import { RegisterRestaurantComponent } from './owner/restaurant-managment/register-restaurant/register-restaurant.component';
+import { OwnerViewRestaurantComponent } from './owner/restaurant-managment/owner-view-restaurant/owner-view-restaurant.component';
+import { AddFoodComponent } from './owner/food-managment/add-food/add-food.component';
+import { ViewFoodComponent } from './owner/food-managment/view-food/view-food.component';
+import { VerificationOtpForForgetPasswordComponent } from './Comman-components/verification-otp-for-forget-password/verification-otp-for-forget-password.component';
+import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-forget-pass/new-pass-for-forget-pass.component';
+
+
 
 
 @NgModule({
@@ -55,6 +69,19 @@ import { UpdateUserComponent } from './Comman-components/update-user/update-user
     OwnerportalComponent,
     OwnerSideBarComponent,
     UpdateUserComponent,
+    ForgetPasswordComponent,
+    HOMEComponent,
+    BoydocumentComponent,
+    PaginationComponent,
+    OenerPanelMaincontentComponent,
+    RegisterRestaurantComponent,
+    OwnerViewRestaurantComponent,
+    AddFoodComponent,
+    ViewFoodComponent,
+    VerificationOtpForForgetPasswordComponent,
+    NewPassForForgetPassComponent,
+
+    
   
 
 
@@ -69,10 +96,11 @@ import { UpdateUserComponent } from './Comman-components/update-user/update-user
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
 
   ],
-  providers: [authInterceptorProviders,adminGuard],
+  providers: [authInterceptorProviders,adminGuard,ownerGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

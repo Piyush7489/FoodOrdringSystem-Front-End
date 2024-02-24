@@ -1,0 +1,18 @@
+.section {
+    /* Style for sections */
+    height: 100vh; /* Adjust height as needed */
+    padding: 20px;
+    margin-bottom: 50px; /* Add space between sections */
+}
+
+.navbar-nav .nav-link {
+    /* Style for navigation links */
+    cursor: pointer;
+    color: #ffffff; /* Adjust color as needed */
+}
+
+.navbar-nav .nav-link:hover {
+    /* Style for navigation links on hover */
+    color: #ffffff; /* Adjust color as needed */
+    text-decoration: none;
+}

@@ -1,0 +1,155 @@
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2>Register</h2>
+            <form [formGroup]="restRegForm">
+                <!-- Part 1: Restaurant Information -->
+                <div class="form-group">
+                    <label for="restName">Restaurant Name:</label>
+                    <input type="text" class="form-control" formControlName="restName" [(ngModel)]="r.restName" required>
+                    <div class="error" *ngIf="restRegForm.get('restName')?.hasError('required') && restRegForm.get('restName')?.touched">
+                        Restaurant Name is required.
+                      </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="restOpenTime">Opening Time:</label>
+                        <input type="time" class="form-control timepicker" formControlName="restOpenTime" [(ngModel)]="r.restOpenTime" required>
+                        <div class="error" *ngIf="restRegForm.get('restOpenTime')?.hasError('required') && restRegForm.get('restOpenTime')?.touched">
+                            Open Time is required.
+                          </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="restCloseTime">Closing Time:</label>
+                        <input type="time" class="form-control timepicker" formControlName="restCloseTime" [(ngModel)]="r.restCloseTime" required>
+                        <div class="error" *ngIf="restRegForm.get('restCloseTime')?.hasError('required') && restRegForm.get('restCloseTime')?.touched">
+                            Close Time is required.
+                          </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="restDescription">Description:</label>
+                    <textarea class="form-control" formControlName="restDescription" rows="3" [(ngModel)]="r.restDescription" required></textarea>
+                    <div class="error" *ngIf="restRegForm.get('restDescription')?.hasError('required') && restRegForm.get('restDescription')?.touched">
+                        Description is required.
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="restaurantImage">Restaurant Image:</label>
+                    <input type="file" class="form-control-file" id="restaurantImage"  formControlName="restaurantImage" required (change)="setImage($event,'imageName')">
+
+                    <div class="error" *ngIf="restRegForm.get('restaurantImage')?.hasError('required') && restRegForm.get('restaurantImage')?.touched">
+                        Restaurant Image is required.
+                      </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Categories:</label>
+                    <div class="category-checkboxes">
+                      <label *ngFor="let category of allCatName">
+                        <input type="checkbox" [value]="category.catId"  (change)="onCheckboxChange($event, category.catId)">
+                        <span>{{ category.catName }}</span>
+                      </label>
+                    </div> -->
+                   <div class="error" *ngIf="restRegForm.get('restCategory')?.hasError('required') && restRegForm.get('restCategory')?.touched">
+                      Category is required.
+                    </div> 
+                  </div>
+                <!-- Part 2: Address Information -->
+                <h4 class="mt-5">Address Information</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="street">Street:</label>
+                        <input type="text" class="form-control" formControlName="street" [(ngModel)]="r.addressrequest.street" required>
+                        <div class="error" *ngIf="restRegForm.get('street')?.hasError('required') && restRegForm.get('street')?.touched">
+                            Street is required.
+                          </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="city">City:</label>
+                        <input type="text" class="form-control" formControlName="city" [(ngModel)]="r.addressrequest.city" required>
+                        <div class="error" *ngIf="restRegForm.get('city')?.hasError('required') && restRegForm.get('city')?.touched">
+                            City is required.
+                          </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="state">State:</label>
+                        <input type="text" class="form-control" formControlName="state" [(ngModel)]="r.addressrequest.state" required>
+                        <div class="error" *ngIf="restRegForm.get('state')?.hasError('required') && restRegForm.get('state')?.touched">
+                            State is required.
+                          </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="zipCode">Zip Code:</label>
+                        <input type="text" class="form-control" formControlName="zipCode" [(ngModel)]="r.addressrequest.zipCode" required>
+                        <div class="error" *ngIf="restRegForm.get('zipCode')?.hasError('required') && restRegForm.get('zipCode')?.touched">
+                            Zip Code is required.
+                          </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="latitude">Latitude:</label>
+                        <input type="text" class="form-control" formControlName="latitude" [(ngModel)]="r.addressrequest.latitude" required>
+                        <div class="error" *ngIf="restRegForm.get('latitude')?.hasError('required') && restRegForm.get('latitude')?.touched">
+                            latituse is required.
+                          </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="longitude">Longitude:</label>
+                        <input type="text" class="form-control" formControlName="longitude" [(ngModel)]="r.addressrequest.longitude" required>
+                        <div class="error" *ngIf="restRegForm.get('longitude')?.hasError('required') && restRegForm.get('longitude')?.touched">
+                            longitute is required.
+                          </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="contect">Contect:</label>
+                    <input type="text" class="form-control" formControlName="restContect" [(ngModel)]="r.addressrequest.restContect" required>
+                    <div class="error" *ngIf="restRegForm.get('restContect')?.hasError('required') && restRegForm.get('restContect')?.touched">
+                        Contect is required.
+                      </div>
+                </div>
+            </div>
+                <!-- Part 3: GST License Information -->
+                <h4 class="mt-5">GST License Information</h4>
+                <div class="form-group">
+                    <label for="gstLicenseNo">GST License Number:</label>
+                    <input type="text" class="form-control" formControlName="gstlicenseNumber" [(ngModel)]="r.gstRegistrationRequest.licenseNumber" required>
+                    <div class="error" *ngIf="restRegForm.get('gstlicenseNumber')?.hasError('required') && restRegForm.get('gstlicenseNumber')?.touched">
+                        Gst no is required.
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="gstLicensePhoto">GST License Photo:</label>
+                    <input type="file" class="form-control-file" formControlName="gstlicensePhoto" [(ngModel)]="r.gstlicensePhoto" required  (change)="setImage($event,'gstlicensePhoto')">
+                    <div class="error" *ngIf="restRegForm.get('gstlicensePhoto')?.hasError('required') && restRegForm.get('gstlicensePhoto')?.touched">
+                        Gst License is required.
+                      </div>
+                </div>
+
+                <!-- Part 4: FSSAI License Information -->
+                <h4 class="mt-5">FSSAI License Information</h4>
+                <div class="form-group">
+                    <label for="fssaiLicenseNo">FSSAI License Number:</label>
+                    <input type="text" class="form-control" formControlName="fssailicenseNumber" [(ngModel)]="r.fsseiLicenseRequest.licenseNumber" required>
+                    <div class="error" *ngIf="restRegForm.get('fssailicenseNumber')?.hasError('required') && restRegForm.get('fssailicenseNumber')?.touched">
+                        Fssai no is required.
+                      </div>
+                </div>
+                <div class="form-group">
+                    <label for="fssaiLicensePhoto">FSSAI License Photo:</label>
+                    <input type="file" class="form-control-file" formControlName="fssaiLicensePhoto" [(ngModel)]="r.fssaiLicensePhoto" required (change)="setImage($event,'fssaiLicensePhoto')">
+                    <div class="error" *ngIf="restRegForm.get('fssaiLicensePhoto')?.hasError('required') && restRegForm.get('fssaiLicensePhoto')?.touched">
+                        Fssai Licence  is required.
+                      </div>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="register()" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

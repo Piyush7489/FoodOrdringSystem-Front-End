@@ -37,7 +37,7 @@ export class AddCategoryComponent implements OnInit{
     {
       return;
     }
-    alert()
+   
     this.service.AddCategory(this.categoryReq).subscribe((data:any)=>
     {
       Toasts.fire({

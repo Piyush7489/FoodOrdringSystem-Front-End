@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     localStorage.clear();
     this.trimValues(this.loginForm.value)
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value.email.trim()+"!!!");
+    
       this.service.generateToken(this.loginForm.value).subscribe(
         (data: any) => {
           localStorage.setItem('token', data.token);
