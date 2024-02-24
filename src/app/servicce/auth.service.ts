@@ -4,6 +4,7 @@ import { ApiRoutes } from '../Utils/api-routes';
 import { AuthRequest } from '../Model/auth-request';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { CurrentUserResponse } from '../payload/Response/current-user-response';
+import { EmailRequest } from '../payload/service-request/email-request';
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +31,7 @@ export class AuthService {
     this.getCurrentUser().subscribe((data) => {
       this.currentUser.next(data);
       this.loginUserData.subscribe((data) => {
-        console.log(data);
+       
 
       })
     })
@@ -106,5 +107,12 @@ export class AuthService {
   {
     return this.http.post(ApiRoutes.SIGNUP,signup);
   }
-
+  public forgetPassCheckEmail(emailData:EmailRequest)
+  {
+    return this.http.post(ApiRoutes.FORGET_PASS_GENERATE_OTP,emailData);
+  }
+  public newPassForForgetPass(email:any,pass:any)
+  {
+    return this.http.get(ApiRoutes.NEW_PASS_FOR_FORGET_PASS+`${email}/${pass}`);
+  }
 }

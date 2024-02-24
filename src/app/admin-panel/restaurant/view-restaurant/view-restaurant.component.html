@@ -1,1 +1,109 @@
-<p>view-restaurant works!</p>
+
+<div class="container" id="content">
+ 
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col">Close Time</th>
+                <th scope="col">Open Time</th>
+                <th scope="col">Apporved</th>
+                <th scope="col">Blocked</th>
+                <th scope="col">Activity</th>
+                <th scope="col">View</th>
+                <!-- <th scope="col">Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of PaginatedData; let i=index">
+                <th scope="row">{{i}}</th>
+                <td>{{item.restName}}</td>
+                <td>{{item.restDescription}}</td>
+                <td>{{item.currentStatus}}</td>
+                <td>{{item.restCloseTime}}</td>
+                <td>{{item.restOpenTime}}</td>
+                <td><span *ngIf="item.isApprove === verified">
+                    <img src="../../../../assets/images/verify.jpg" alt="Blocked"   />
+                  </span>
+                  <span *ngIf="item.isApprove === unverified">
+                    <img src="../../../../assets/images/reject.png" alt="Unblocked" />
+                  </span></td>
+                 <td >
+                 <span *ngIf="item.isBlocked === block">  
+                    <img src="../../../../assets/images/block.png" alt="Blocked"  />
+                  </span>
+                  <span *ngIf="item.isBlocked === unblock">
+                    <img src="../../../../assets/images/unblock.jpg" alt="Unblocked" />
+                  </span>
+                  <select class="custom-select"  [(ngModel)]="item.isBlocked" (change)="onChange(item)">
+                    <option [ngValue]=block>block</option>
+                    <option [ngValue]=unblock>unblock</option>
+                 </select> 
+                </td>
+                 <td>
+                    <div class="form-check form-switch">
+                        <input  class="form-check-input" type="checkbox" id="toggleSwitch" [(ngModel)]="item.isActive" (ngModelChange)="toggleStatus(item.restId, item.isActive)" [disabled]="item.isApprove==unverified" >
+                       
+                    </div>
+                </td>
+                <td><button (click)="viewRestaurantModel(item.restId)"  class="btn btn-primary"><i class="bi bi-eye"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination [totalItem]="length" [itemPerPage]="itemPerPage" [currentpage]="currentpage" (onClick)="changePage($event)"></app-pagination>
+</div>
+
+
+
+<div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+   
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title center-text" id="updateModalLabel">Verification</h1>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeRestaurantModel()"></button>
+            </div>
+            <!-- Card container -->
+            <div class="card-container">
+                <!-- First card -->
+                <div class="card single-card text-center">
+                    <img [src]="verification.restImage" class="card-img-top custom-img mx-auto" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">{{verification.restname}}</h4>
+                    </div>
+                    
+                </div>
+                
+                
+                <!-- Second row with two cards -->
+                <div class="card">
+                    <h1 class="card-title">Gst Licence</h1>
+                    <img [src]="verification.gstLicencePhoto" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{verification.gstlicenseNo}}</h5>
+                        
+                    </div>
+                </div>
+                <div class="card">
+                    <h1 class="card-title">Fssai Licence</h1>
+                    <img [src]="verification.fssaiLicencePhoto" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{verification.fssaiLicenceNo}}pp</h5>
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- Buttons for verification -->
+            <div class="verification-buttons container text-center">
+                <button class="btn btn-success custom-indigo-button me-2" (click)="verifyRestaurant(verification.restid)">Verifiy</button>
+                <button class="btn btn-danger" (click)="rejectRestaurant(verification.restid)" >Reject</button>
+            </div>   
+        </div>
+    </div>
+</div>

@@ -15,14 +15,31 @@ import { OwnerportalComponent } from './owner/ownerportal/ownerportal.component'
 import { VerifyOtpComponent } from './Comman-components/verify-otp/verify-otp.component';
 import { otpGuard } from './guard/otp.guard';
 import { authGuard } from './guard/auth.guard';
+import { ForgetPasswordComponent } from './Comman-components/forget-password/forget-password.component';
+import { HOMEComponent } from './Comman-components/home/home.component';
+import { BoydocumentComponent } from './boy-document-registration/boydocument/boydocument.component';
+import { ownerGuard } from './guard/owner-guard.guard';
+import { OenerPanelMaincontentComponent } from './owner/oener-panel-maincontent/oener-panel-maincontent.component';
+import { RegisterRestaurantComponent } from './owner/restaurant-managment/register-restaurant/register-restaurant.component';
+import { OwnerViewRestaurantComponent } from './owner/restaurant-managment/owner-view-restaurant/owner-view-restaurant.component';
+import { AddFoodComponent } from './owner/food-managment/add-food/add-food.component';
+import { ViewFoodComponent } from './owner/food-managment/view-food/view-food.component';
+import { VerificationOtpForForgetPasswordComponent } from './Comman-components/verification-otp-for-forget-password/verification-otp-for-forget-password.component';
+import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-forget-pass/new-pass-for-forget-pass.component';
+
 
 
 
 const routes: Routes = [
+  {path:'',component:HOMEComponent},
   {path:'login',component:LoginComponent},
- {path:'signup',component:SignupComponent},
- {path:'verify-otp',component:VerifyOtpComponent,canActivate:[otpGuard]},
- 
+  {path:'signup',component:SignupComponent},
+  {path:'boy-document-registration',component:BoydocumentComponent},
+  {path:'forget-password',component:ForgetPasswordComponent},
+  {path:'verify-otp-for-forget-password' ,component:VerificationOtpForForgetPasswordComponent},
+  {path:'new-pass',component:NewPassForForgetPassComponent},
+  {path:'verify-otp',component:VerifyOtpComponent,canActivate:[otpGuard]},
+
   {path:'admin',component:AdminPortalComponent,
     canActivate:[adminGuard],
     children:[
@@ -30,8 +47,18 @@ const routes: Routes = [
     {path:'add-category',component:AddCategoryComponent},
     {path:'view-category',component:ViewAllCategoryComponent},
     {path:'view-restaurant',component:ViewRestaurantComponent},
+  
   ]},
-  {path:'owner',component:OwnerportalComponent}
+  {path:'owner',component:OwnerportalComponent,
+   canActivate:[ownerGuard],
+   children:[
+    {path:'',component: OenerPanelMaincontentComponent},
+    {path:'add-restaurant',component:RegisterRestaurantComponent},
+    {path:'view-restaurant',component:OwnerViewRestaurantComponent},
+    {path:'add-food',component:AddFoodComponent},
+    {path:'view-food',component:ViewFoodComponent},
+  ]},
+  
 ];
 
 @NgModule({

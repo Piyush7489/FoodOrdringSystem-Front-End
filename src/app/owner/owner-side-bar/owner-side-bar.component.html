@@ -28,22 +28,21 @@
         </a>
         <div class="collapse" id="form-elements">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" [routerLink]="'/admin/view-restaurant'" >View All Restaurants</a></li>
-            <li class="nav-item"><a class="nav-link">Verified Restaurants</a></li>
-            <li class="nav-item"><a class="nav-link">UnVerified Restaurants</a></li>
-            <li class="nav-item"><a class="nav-link"> Block Restaurants</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/owner/view-restaurant">View Restaurants</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/owner/add-restaurant">Add Restaurants</a></li>
+          
           </ul>
         </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
           <i class="icon-grid-2 menu-icon"></i>
-          <span class="menu-title">Food</span>
+          <span class="menu-title" >Food</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="tables">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link">View All Food</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/owner/view-food">View All Food</a></li>
           </ul>
         </div>
       </li>

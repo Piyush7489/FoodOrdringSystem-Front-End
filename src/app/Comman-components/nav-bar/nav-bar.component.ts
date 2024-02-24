@@ -12,13 +12,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit{
-
-  constructor(private login:AuthService,private router:Router){}
+  public isLoggedIn = false;
+  constructor(public login:AuthService,private router:Router){}
   currentUser:CurrentUserResponse = new CurrentUserResponse;
   imagePreview:any;
   ngOnInit(): void {
 
-    this.getCurrentUser()
+    this.getCurrentUser();
+    this.isLogin();
+  
   }
 
   getCurrentUser()
@@ -29,6 +31,13 @@ export class NavBarComponent implements OnInit{
         this.imagePreview = ApiRoutes.IMAGE_URL+this.currentUser.profilePhoto
       }
     })
+  }
+
+  isLogin()
+  {
+    this.login.isLoggedIn().subscribe((loggedIn:boolean)=>{
+      this.isLoggedIn=loggedIn;
+    });
   }
 
   logout()

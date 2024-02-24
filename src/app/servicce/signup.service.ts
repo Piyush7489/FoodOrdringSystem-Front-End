@@ -38,4 +38,6 @@ export class SignupService implements OnInit{
     return this.http.post(ApiRoutes.CHECK_OTP,ro)
   }
 
+  
+
 }
