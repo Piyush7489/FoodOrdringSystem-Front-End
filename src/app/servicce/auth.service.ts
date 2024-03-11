@@ -25,6 +25,8 @@ export class AuthService {
     return this.http.post<any>(ApiRoutes.GENERATE_TOKEN,request);
   }
 
+  
+
   public loginUser(token: any) {
 
     localStorage.setItem('token', token);
@@ -114,5 +116,10 @@ export class AuthService {
   public newPassForForgetPass(email:any,pass:any)
   {
     return this.http.get(ApiRoutes.NEW_PASS_FOR_FORGET_PASS+`${email}/${pass}`);
+  }
+
+  public changePassword(changePassword:any)
+  {
+    return this.http.post(ApiRoutes.CHANGE_PASS,changePassword);
   }
 }

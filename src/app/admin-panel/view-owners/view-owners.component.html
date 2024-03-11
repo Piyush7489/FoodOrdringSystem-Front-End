@@ -1,0 +1,134 @@
+<div class="container" id="content">
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Id</th>
+                <th scope="col">Profile</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mob no.</th>
+                <th scope="col">Join at</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
+                <th scope="col">view restaurants</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let u of PaginatedData">
+                <th>#</th>
+                <th scope="row">{{u.userId}}</th>
+                <td > 
+                    <div class="profile-picture">
+                    <img [src]="u.profilePhoto"alt="Profile Picture">
+                   </div>
+               </td>
+                <td>{{u.firstName}} {{u.lastName}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.mob}}</td>
+                <td>{{u.createAt}}</td> 
+                <td>{{u.tempAddress}}</td> 
+                <td>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="toggleSwitch" >
+                    <label class="form-check-label" for="toggleSwitch">
+                      
+                    </label>
+                  </div>
+                </td>
+                <td><button  (click)="viewOwnerRestaurant(u.userId)"   class="btn btn-primary"><i class="bi bi-eye"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination [totalItem]="length" [itemPerPage]="itemPerPage" [currentpage]="currentpage" (onClick)="changePage($event)"></app-pagination>
+</div>
+
+ <!-- Modal for updating category -->
+ <div class="modal fade" id="view-rest" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="card" *ngFor="let v of viewRest">
+        <h2><strong>Restaurant's Name:-</strong>{{v.restName}}</h2>
+        <div class="row">
+          <div class="col"><strong>Restaurant Image</strong>
+            <img src="{{v.restImage}}" class="card-img-top small-image" alt="{{v.restName}}">
+          </div>
+          <div class="col"><strong>GST Licence Image</strong>
+            <img src="{{v.gstLicencePhoto}}" class="card-img-top small-image" alt="{{v.restName}}">
+          </div>
+          <div class="col"><strong>FSSAI Licence Image</strong>
+            <img src="{{v.fssaiLicencePhoto}}" class="card-img-top small-image" alt="{{v.restName}}">
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><strong>About Restaurant:-</strong> {{v.restDescription}}</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Close Time</td>
+                <td>{{v.restCloseTime}}</td>
+              </tr>
+              <tr>
+                <td>Open Time</td>
+                <td>{{v.restOpenTime}}</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>{{v.currentStatus}}</td>
+              </tr>
+              <tr>
+                <td>Is Active</td>
+                <td>{{v.isActive ? 'Yes' : 'No'}}</td>
+              </tr>
+              <tr>
+                <td>Created At</td>
+                <td>{{v.createdat}}</td>
+              </tr>
+              <tr>
+                <td>GST Licence No</td>
+                <td>{{v.gstLicenceNo}}</td>
+              </tr>
+              <tr>
+                <td>FSSAI Licence No</td>
+                <td>{{v.fssaiLicenceNo}}</td>
+              </tr>
+              <tr>
+                <td>City</td>
+                <td>{{v.city}}</td>
+              </tr>
+              <tr>
+                <td>State</td>
+                <td>{{v.state}}</td>
+              </tr>
+              <tr>
+                <td>Contact</td>
+                <td>{{v.restContect}}</td>
+              </tr>
+              <tr>
+                <td>Approval</td>
+                <td><span *ngIf="v.isApprove === verified">
+                    <img src="../../../../assets/images/verify.jpg" alt="Blocked"   />
+                  </span>
+                  <span *ngIf="v.isApprove === unverified">
+                    <img src="../../../../assets/images/reject.png" alt="Unblocked" />
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

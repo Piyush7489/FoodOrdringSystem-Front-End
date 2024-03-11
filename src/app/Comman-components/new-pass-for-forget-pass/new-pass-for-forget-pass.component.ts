@@ -41,6 +41,7 @@ submit()
       text:data.message,
       timer:3000
     })
+    localStorage.removeItem('fake-email');
     this.router.navigate(['login'])
 
   },(error:any)=>

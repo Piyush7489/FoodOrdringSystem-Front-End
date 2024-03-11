@@ -43,7 +43,19 @@ public static BLOCK_RESTAURANT_BY_ID=this.BASE_URL+'/admin/RestaurantBlock/'
 public static UNBLOCK_RESTAURANT_BY_ID=this.BASE_URL+'/admin/RestaurantUnBlock/'
 
 //OWNER
-public static REGISTER_RESTAURANT=this.BASE_URL+'/rest/save'
-public static FORGET_PASS_GENERATE_OTP=this.BASE_URL+'/emailAPI/forget-pass'
-public static NEW_PASS_FOR_FORGET_PASS=this.BASE_URL+'/auth/new-pass/'
+public static REGISTER_RESTAURANT=this.BASE_URL+'/rest/save';
+public static FORGET_PASS_GENERATE_OTP=this.BASE_URL+'/emailAPI/forget-pass';
+public static NEW_PASS_FOR_FORGET_PASS=this.BASE_URL+'/auth/new-pass/';
+public static CHANGE_PASS=this.BASE_URL+'/auth/changePass'
+public static LIST_OF_CUSTOMER=this.BASE_URL+'/admin/customer-list'
+public static LIST_OF_OWNER=this.BASE_URL+'/admin/owner-list'
+public static  GET_REST_OF_OWNER_BY_OWNER_ID=this.BASE_URL+'/admin/owner-rest/';
+public static OWNER_RESTAURANT=this.BASE_URL+'/rest/view-owner-rest'
+public static UPDATE_REST_DATA_BY_REST_ID=this.BASE_URL+'/rest/get/';
+public static UPDATE_RESTAURANT=this.BASE_URL+'/rest/edit-rest'
+public static VIEW_FOOD=this.BASE_URL+'/food/view-food'
+public static ADD_FOOD=this.BASE_URL+'/food/save'
+public static UPDATE_FOOD=this.BASE_URL+'/food/update-food'
+public static REST_NAME_OF_OWNER=this.BASE_URL+'/rest/rest-name-of-owner'
+public static REST_CAT_NAME=this.BASE_URL+'/globalCategory/cat-name/'
 }

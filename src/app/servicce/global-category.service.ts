@@ -45,4 +45,9 @@ export class GlobalCategoryService {
   {
     return this.http.get(ApiRoutes.GET_ALL_Cat_NAME);
   }
+
+  public getAllCatnameOfRestaurant(restId:any)
+  {
+    return this.http.get(ApiRoutes.REST_CAT_NAME+`${restId}`)
+  }
 }

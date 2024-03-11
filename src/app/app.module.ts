@@ -48,9 +48,11 @@ import { AddFoodComponent } from './owner/food-managment/add-food/add-food.compo
 import { ViewFoodComponent } from './owner/food-managment/view-food/view-food.component';
 import { VerificationOtpForForgetPasswordComponent } from './Comman-components/verification-otp-for-forget-password/verification-otp-for-forget-password.component';
 import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-forget-pass/new-pass-for-forget-pass.component';
+import { ChanggPassComponent } from './Comman-components/changg-pass/changg-pass.component';
+import { ViewCustomerComponent } from './admin-panel/view-customer/view-customer.component';
+import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.component';
 
-
-
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -80,11 +82,9 @@ import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-
     ViewFoodComponent,
     VerificationOtpForForgetPasswordComponent,
     NewPassForForgetPassComponent,
-
-    
-  
-
-
+    ChanggPassComponent,
+    ViewCustomerComponent,
+    ViewOwnersComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +97,8 @@ import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-
     MatCardModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
 
   ],
   providers: [authInterceptorProviders,adminGuard,ownerGuard],

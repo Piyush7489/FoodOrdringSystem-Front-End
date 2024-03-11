@@ -1,0 +1,12 @@
+.profile-picture {
+    width: 50px; /* Decrease this value as needed */
+    height: 50px; /* Decrease this value as needed */
+    border-radius: 50%; /* This makes the image circular */
+    overflow: hidden; /* This hides any image overflow beyond the circular shape */
+  }
+  
+  .profile-picture img {
+    width: 100%; /* This ensures the image takes up the full circular space */
+    height: auto; /* This allows the image to retain its aspect ratio */
+  }
+  
