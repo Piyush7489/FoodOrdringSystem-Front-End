@@ -29,9 +29,9 @@
         <div class="collapse" id="form-elements">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"><a class="nav-link" [routerLink]="'/admin/view-restaurant'" >View All Restaurants</a></li>
-            <li class="nav-item"><a class="nav-link">Verified Restaurants</a></li>
+            <!-- <li class="nav-item"><a class="nav-link">Verified Restaurants</a></li>
             <li class="nav-item"><a class="nav-link">UnVerified Restaurants</a></li>
-            <li class="nav-item"><a class="nav-link"> Block Restaurants</a></li>
+            <li class="nav-item"><a class="nav-link"> Block Restaurants</a></li> -->
           </ul>
         </div>
       </li>
@@ -48,6 +48,18 @@
         </div>
       </li>
       <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#error1" aria-expanded="false" aria-controls="error1">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Customer</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="error1">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link"  routerLink="/admin/customer-list"> View All Customer</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
           <i class="icon-bar-graph menu-icon"></i>
           <span class="menu-title">Delivery Boy</span>
@@ -55,13 +67,14 @@
         </a>
         <div class="collapse" id="charts">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link">View Delivery Boy</a></li>
-            <li class="nav-item"> <a class="nav-link">Valid Delivery Boy</a></li>
-            <li class="nav-item"> <a class="nav-link">Block Delivery Boy</a></li>
+            <li class="nav-item"> <a class="nav-link">List of Delivery Boy</a></li>
+            <!-- <li class="nav-item"> <a class="nav-link">Valid Delivery Boy</a></li>
+            <li class="nav-item"> <a class="nav-link">Block Delivery Boy</a></li> -->
           </ul>
         </div>
       </li>
   
+      
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
           <i class="icon-contract menu-icon"></i>
@@ -70,7 +83,7 @@
         </a>
         <div class="collapse" id="icons">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" >Restaurant Owners</a></li>
+            <li class="nav-item"> <a class="nav-link" routerLink="/admin/owner-list" >Restaurant Owners</a></li>
           </ul>
         </div>
       </li>
@@ -99,6 +112,7 @@
           </ul>
         </div>
       </li>
+     
     <!--   <li class="nav-item">
         <a class="nav-link" href="pages/documentation/documentation.html">
           <i class="icon-paper menu-icon"></i>

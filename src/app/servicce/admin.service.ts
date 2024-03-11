@@ -52,4 +52,16 @@ export class AdminService {
   {
     return this.http.get(ApiRoutes.UNBLOCK_RESTAURANT_BY_ID+`${id}`);
   }
+  public listOfCustomers(pageno:any,itemperpage:any)
+  {
+    return this.http.get(ApiRoutes.LIST_OF_CUSTOMER+`?page=${pageno}&size=${itemperpage}`);
+  }
+  public listOfOwners(pageno:any,itemperpage:any)
+  {
+    return this.http.get(ApiRoutes.LIST_OF_OWNER+`?page=${pageno}&size=${itemperpage}`);
+  }
+  public viewRestOfOwnerByOwnerId(ownerId:any)
+  {
+    return this.http.get(ApiRoutes.GET_REST_OF_OWNER_BY_OWNER_ID+`${ownerId}`)
+  }
 }

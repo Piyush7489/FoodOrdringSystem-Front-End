@@ -1,1 +1,70 @@
-<p>add-food works!</p>
+<div class="container">
+  <h2>Food Form</h2>
+  <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="food-name">Food Name:</label>
+      <input type="text" id="food-name" name="food-name" formControlName="foodName" [(ngModel)]="food.foodName">
+      <div class="error" *ngIf="foodForm.get('foodName')?.hasError('required') && foodForm.get('foodName')?.touched">
+        Food Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="food-description">Food Description:</label>
+      <textarea id="food-description" name="food-description" rows="4" formControlName="foodDescription" [(ngModel)]="food.foodDescription"></textarea>
+      <div class="error" *ngIf="foodForm.get('foodDescription')?.hasError('required') && foodForm.get('foodDescription')?.touched">
+        Description is required.
+      </div>
+      
+
+    </div>
+    <div class="form-group">
+      <label for="food-price">Food Price:</label>
+      <input type="number" id="food-price" name="food-price" step="0.01" min="0" formControlName="foodPrice" [(ngModel)]="food.foodPrice">
+      <div class="error" *ngIf="foodForm.get('foodPrice')?.hasError('required') && foodForm.get('foodPrice')?.touched">
+        Price is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="food-image">Food Image:</label>
+      <input type="file" id="food-image" name="food-image" accept="image/*" formControlName="imageName"(change)="setImage($event)">
+      <div class="error" *ngIf="foodForm.get('imageName')?.hasError('required') && foodForm.get('imageName')?.touched">
+        Foodimage  is required.
+      </div>
+    </div>
+
+
+
+    <!-- <button class="button" (click)="selectRest(i.rid)" *ngFor="let i of restName">{{i.rname}}</button>
+    <div *ngIf="isDropdownOpen" class="dropdown-content">
+      <select>
+        <option *ngFor="let u of restCatName">{{u.catName}}</option>
+      </select>
+    </div> -->
+
+<!-- 
+    <select class="form-select" aria-label="Select a restaurant" #selectElement (change)="selectRest(selectElement.value)">
+      <option *ngFor="let restaurant of restName" [value]="restaurant.rid">{{ restaurant.rname }}</option>
+    </select> -->
+    {{selectedRestaurantId|json}}
+    <mat-form-field appearance="outline" class="mt full-width">
+      <mat-label>Select Restaurant</mat-label>
+      <mat-select (selectionChange)="selectRest($event.value)" name="restaurant"  [(ngModel)]="selectedRestaurantId" >
+      <mat-option  [value]="restaurant.rid" *ngFor="let restaurant of restName"  >{{restaurant.rname}} </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mt full-width" *ngIf="isDropdownOpen">
+      <mat-label >Select Category</mat-label>
+      <mat-select name="catId"    (selectionChange)="selectRest1($event.value)" >
+      <mat-option [value]="category.catId" *ngFor="let category of restCatName ">{{category.catName}}</mat-option>
+      </mat-select>
+</mat-form-field>
+
+    
+    
+    
+    
+
+    <button type="submit">Submit</button>{{food|json}}
+  </form>
+</div>

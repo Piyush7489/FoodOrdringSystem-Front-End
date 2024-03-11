@@ -1,2 +1,89 @@
-<p>view-food works!</p>
-<button routerLink="/owner/add-food">Add Food</button>
+<div id="content">
+<div class="container text-center" >
+  <button  *ngIf="flag" routerLink="/owner/add-food" class="add-food-button">Add Food</button>
+  <div *ngIf="!flag">
+    <h1>Food Not Available...!!</h1>
+  </div>
+</div>
+<div class="card-container">
+  <div class="card" style="width: 18rem;" *ngFor="let f of v">
+    <h3><strong>Restaurant:-</strong>{{f.foodRestaurantname}}</h3>
+    <!-- Card content -->
+    <img class="card-img-top" [src]="f.imageName" alt="Card image cap">
+    
+    <div class="card-body">
+      <h5 class="card-title">{{f.foodName}}</h5>
+      <p class="card-text">{{f.foodDescription}}</p>
+   
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{f.foodCreatedAt}}</li>
+      <li class="list-group-item">₹{{f.foodPrice}}</li>
+      <li class="list-group-item">{{f.foodCategoryName}}</li>
+      <li class="list-group-item">
+        <span *ngIf="f.isAvailable; else unavailableIcon"><i class="bi bi-check-circle-fill text-success"></i> Available</span>
+        <ng-template #unavailableIcon><i class="bi bi-x-circle-fill text-danger"></i><del>Unavailable</del> </ng-template>
+      </li>
+    </ul>
+    <div class="d-flex justify-content-center mt-3">
+      <button class="btn btn-primary " (click)="updateFood(f)" ><i class="bi bi-pencil"></i></button>
+      <button class="btn btn-danger"  ><i class="bi bi-trash"></i></button>
+    </div>
+  </div>
+</div>
+</div>
+<app-pagination *ngIf="flag" [totalItem]="length" [itemPerPage]="itemPerPage" [currentpage]="currentpage" (onClick)="changePage($event)"></app-pagination>
+</div>
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="updateModalLabel">Update Food</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-auto">
+              <img [src]="foodPhoto" class="card-img-top small-image" alt="{{updateFoodRequest.foodName}}">
+            </div>
+            
+        </div>
+          <form [formGroup]="updateFoodForm" >
+           
+            <div class="modal-body">
+              <!-- Form fields for updating category -->
+              <div class="mb-3">
+                  <label for="updateCatName" class="form-label">Food Name</label>
+                  <input type="text" class="form-control" id="updateCatName" formControlName="foodName" [(ngModel)]="updateFoodRequest.foodName">
+                  <div class="error" *ngIf="updateFoodForm.get('foodName')?.hasError('required') && updateFoodForm.get('foodName')?.touched">
+                      Food name is required.
+                  </div>
+              </div>
+              <div class="mb-3">
+                  <label for="updateCatDescription" class="form-label">Food Description</label>
+                  <textarea class="form-control" id="updateCatDescription" formControlName="foodDescription" [(ngModel)]="updateFoodRequest.foodDescription" rows="3"></textarea>
+                  <div class="error" *ngIf="updateFoodForm.get('foodDescription')?.hasError('required') && updateFoodForm.get('foodDescription')?.touched">
+                      Description is required.
+                  </div>
+              </div>
+              <div class="mb-3">
+                  <label for="updateCatPrice" class="form-label">Food Price</label>
+                  <input type="number" class="form-control" id="updateCatPrice" formControlName="foodPrice" [(ngModel)]="updateFoodRequest.foodPrice">
+                  <div class="error" *ngIf="updateFoodForm.get('foodPrice')?.hasError('required') && updateFoodForm.get('foodPrice')?.touched">
+                      Price is required.
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="restaurantImage">Choose Restaurant Image:</label>
+                    <input type="file" class="form-control-file" id="restaurantImage"   required (change)="setImage($event)">
+                   
+                </div>
+              ..
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="updateChanges()">Save changes</button>
+          </div>
+          
+          </form>
+      </div>
+  </div>
+</div>

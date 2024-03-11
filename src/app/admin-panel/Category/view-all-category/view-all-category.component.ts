@@ -13,10 +13,6 @@ declare var bootstrap: any;
   styleUrls: ['./view-all-category.component.css']
 })
 export class ViewAllCategoryComponent implements AfterViewInit {
-
-
-
- 
   constructor(private service: AdminService,private catService:GlobalCategoryService,private fb:FormBuilder) { 
 
     this.categoryForm=this.fb.group({
@@ -24,6 +20,8 @@ export class ViewAllCategoryComponent implements AfterViewInit {
       catDescription:['',[Validators.required]],
      });
   }
+
+  
   categoryForm!:FormGroup;
   currentpage :number= 0;
   itemPerPage :number= 10;
@@ -81,7 +79,7 @@ export class ViewAllCategoryComponent implements AfterViewInit {
   openUpdateModal(item: any) {
      this.catResponse=item;
      const content = document.getElementById('content');
-    const modal = document.getElementById('updateModal');
+     const modal = document.getElementById('updateModal');
     if (modal) {
       modal.classList.add('show');
       content?.classList.add('blur-background')
@@ -133,7 +131,6 @@ export class ViewAllCategoryComponent implements AfterViewInit {
       this.v = data.message.content;
       console.log(this.v);
       this.length =  data.message.totalElements;
-      
     })
   }
 }

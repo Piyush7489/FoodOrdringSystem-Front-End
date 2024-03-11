@@ -23,8 +23,6 @@ export class RegisterRestaurantComponent implements AfterViewInit {
       restDescription: ['', [Validators.required]],
       restaurantImage: ['', [Validators.required]],
       restContect:['',[Validators.required]],
-      // imageName:['',[Validators.required]],
-
         street: ['', [Validators.required]],
         city: ['', [Validators.required]],
         state: ['', [Validators.required]],
@@ -35,8 +33,6 @@ export class RegisterRestaurantComponent implements AfterViewInit {
         gstlicensePhoto:['',[Validators.required]],
         fssailicenseNumber: ['', [Validators.required]],
        fssaiLicensePhoto: ['', [Validators.required]],
-       // restCategory: new FormControl('', Validators.required)
-      
     });
     this.getAllCatName();
   }

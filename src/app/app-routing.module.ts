@@ -26,6 +26,9 @@ import { AddFoodComponent } from './owner/food-managment/add-food/add-food.compo
 import { ViewFoodComponent } from './owner/food-managment/view-food/view-food.component';
 import { VerificationOtpForForgetPasswordComponent } from './Comman-components/verification-otp-for-forget-password/verification-otp-for-forget-password.component';
 import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-forget-pass/new-pass-for-forget-pass.component';
+import { ChanggPassComponent } from './Comman-components/changg-pass/changg-pass.component';
+import { ViewCustomerComponent } from './admin-panel/view-customer/view-customer.component';
+import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.component';
 
 
 
@@ -36,6 +39,7 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'boy-document-registration',component:BoydocumentComponent},
   {path:'forget-password',component:ForgetPasswordComponent},
+  {path:'change-pass',component:ChanggPassComponent},
   {path:'verify-otp-for-forget-password' ,component:VerificationOtpForForgetPasswordComponent},
   {path:'new-pass',component:NewPassForForgetPassComponent},
   {path:'verify-otp',component:VerifyOtpComponent,canActivate:[otpGuard]},
@@ -47,7 +51,8 @@ const routes: Routes = [
     {path:'add-category',component:AddCategoryComponent},
     {path:'view-category',component:ViewAllCategoryComponent},
     {path:'view-restaurant',component:ViewRestaurantComponent},
-  
+    {path:'customer-list',component:ViewCustomerComponent},
+    {path:'owner-list',component:ViewOwnersComponent},
   ]},
   {path:'owner',component:OwnerportalComponent,
    canActivate:[ownerGuard],
@@ -57,6 +62,7 @@ const routes: Routes = [
     {path:'view-restaurant',component:OwnerViewRestaurantComponent},
     {path:'add-food',component:AddFoodComponent},
     {path:'view-food',component:ViewFoodComponent},
+    
   ]},
   
 ];

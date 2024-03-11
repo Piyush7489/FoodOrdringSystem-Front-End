@@ -27,24 +27,13 @@ else if(rest.isBlocked==this.unblock)
       console.log(data.data);
     })
 }
-
-
 }
-
-
-
-  
-
-
   verified=ApiRoutes.VERIFIED;
   unverified=ApiRoutes.UNVERIFIED;
   block=ApiRoutes.BLOCK;
   unblock=ApiRoutes.UNBLOCK;
-
   constructor(private service:AdminService,private restService:RestautantService)
   {}
- 
-
   currentpage :number= 0;
   itemPerPage :number= 10;
   length: number = 0;
@@ -62,9 +51,6 @@ public getRestaurant(page:any,size:any)
     this.length=data.message.totalElements; 
   })
 }
-
-
-
 changePage(page: number) {
   this.currentpage = page;
   this.getRestaurant(this.currentpage,this.itemPerPage);
@@ -74,9 +60,7 @@ get PaginatedData() {
   const start = this.currentpage  * this.itemPerPage;
   const end = (this.currentpage +1)* this.itemPerPage; 
   return this.r
-}
-    
-  
+}  
 toggleStatus(id:any,status:any)
 {
    this.service.changeRestStatus(id,status).subscribe((data)=>
@@ -84,28 +68,22 @@ toggleStatus(id:any,status:any)
     console.log(data);
    })
 }
-
 viewResponse:ViewRestaurantResponse =new ViewRestaurantResponse();
-
-
-
 verification :VerificationResponse= new VerificationResponse();
   viewRestaurantModel(id: any) {
     this.service.verificationRequiredData(id).subscribe((data:any)=>
     {
       this.verification=data.message;
-        console.log(this.verification);
-        
+        console.log(this.verification); 
     })
     const content = document.getElementById('content');
-   const modal = document.getElementById('viewModal');
+    const modal = document.getElementById('viewModal');
    if (modal) {
      modal.classList.add('show');
      content?.classList.add('blur-background')
      modal.style.display = 'block';
    }
  }
-
  closeRestaurantModel()
  {
   const content = document.getElementById('content');
