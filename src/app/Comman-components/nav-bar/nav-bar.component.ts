@@ -16,6 +16,7 @@ export class NavBarComponent implements OnInit{
   constructor(public login:AuthService,private router:Router){}
   currentUser:CurrentUserResponse = new CurrentUserResponse;
   imagePreview:any;
+  userRole:any
   ngOnInit(): void {
 
     this.getCurrentUser();
@@ -28,6 +29,7 @@ export class NavBarComponent implements OnInit{
     this.login.loginUserData.subscribe({
       next:(data:any)=>{
         this.currentUser = data.message
+        this.userRole = this.currentUser.userRole
         this.imagePreview = ApiRoutes.IMAGE_URL+this.currentUser.profilePhoto
       }
     })

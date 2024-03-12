@@ -38,6 +38,7 @@
                 <div class="form-group">
                     <label for="restaurantImage">Restaurant Image:</label>
                     <input type="file" class="form-control-file" id="restaurantImage"  formControlName="restaurantImage" required (change)="setImage($event,'imageName')">
+                    <img *ngIf="imageName" [src]="imageName" alt="" height="100" width="100" class = "document-images">
 
                     <div class="error" *ngIf="restRegForm.get('restaurantImage')?.hasError('required') && restRegForm.get('restaurantImage')?.touched">
                         Restaurant Image is required.
@@ -51,7 +52,7 @@
                         <input type="checkbox" [value]="category.catId"  (change)="onCheckboxChange($event, category.catId)">
                         <span>{{ category.catName }}</span>
                       </label>
-                    </div> -->
+                    </div> 
                    <div class="error" *ngIf="restRegForm.get('restCategory')?.hasError('required') && restRegForm.get('restCategory')?.touched">
                       Category is required.
                     </div> 
@@ -127,6 +128,7 @@
                 <div class="form-group">
                     <label for="gstLicensePhoto">GST License Photo:</label>
                     <input type="file" class="form-control-file" formControlName="gstlicensePhoto" [(ngModel)]="r.gstlicensePhoto" required  (change)="setImage($event,'gstlicensePhoto')">
+                    <img *ngIf="gstlicensePhoto" [src]="gstlicensePhoto" alt="" height="100" width="100" class = "document-images">
                     <div class="error" *ngIf="restRegForm.get('gstlicensePhoto')?.hasError('required') && restRegForm.get('gstlicensePhoto')?.touched">
                         Gst License is required.
                       </div>
@@ -144,6 +146,7 @@
                 <div class="form-group">
                     <label for="fssaiLicensePhoto">FSSAI License Photo:</label>
                     <input type="file" class="form-control-file" formControlName="fssaiLicensePhoto" [(ngModel)]="r.fssaiLicensePhoto" required (change)="setImage($event,'fssaiLicensePhoto')">
+                    <img *ngIf="fssaiLicensePhoto" [src]="fssaiLicensePhoto" alt="" height="100" width="100" class = "document-images">
                     <div class="error" *ngIf="restRegForm.get('fssaiLicensePhoto')?.hasError('required') && restRegForm.get('fssaiLicensePhoto')?.touched">
                         Fssai Licence  is required.
                       </div>

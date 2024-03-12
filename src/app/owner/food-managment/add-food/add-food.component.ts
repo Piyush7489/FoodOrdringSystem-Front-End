@@ -81,4 +81,7 @@ export class AddFoodComponent implements AfterViewInit{
       selectRest1(event:any){
           this.food.globalCategoryId =event
       }
+
+
+     
 }
