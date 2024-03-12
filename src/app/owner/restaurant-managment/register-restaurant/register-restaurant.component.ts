@@ -14,6 +14,11 @@ import { RestautantService } from 'src/app/servicce/restautant.service';
 })
 export class RegisterRestaurantComponent implements AfterViewInit {
 
+
+  imageName:any
+  fssaiLicensePhoto:any
+  gstlicensePhoto:any
+  imagePrivew:any
   constructor(private fb:FormBuilder,private catService:GlobalCategoryService,private restService:RestautantService,private router:Router)
   {
     this.restRegForm=this.fb.group({
@@ -61,17 +66,7 @@ export class RegisterRestaurantComponent implements AfterViewInit {
   }, 5000);
   }
 
-  setImage(event:any, s:string)
-  {
-    if(s=='imageName')
-     this.r.imageName=event.target.files[0];
-    if(s=='fssaiLicensePhoto')
-    this.r.fssaiLicensePhoto=event.target.files[0];
-    if(s=='gstlicensePhoto')
-    this.r.gstlicensePhoto=event.target.files[0];
-     
-    
-  }
+  
 allCatName:ViewCategoryResponse[]=[];
   getAllCatName()
   {
@@ -89,5 +84,50 @@ allCatName:ViewCategoryResponse[]=[];
       this.r.restCategory = this.r.restCategory.filter(id => id !== catId);
     }
     this.restRegForm.get('restCategory')?.setValue(this.r.restCategory);
+  }
+
+   file:any
+   reader:any
+  setImage(event:any, s:string)
+  {
+    if(s=='imageName')
+    {
+      this.r.imageName=event.target.files[0];
+      this.setImagePreviewInObj(s,this.r.imageName)
+    }
+    if(s=='fssaiLicensePhoto')
+    {
+      this.r.fssaiLicensePhoto=event.target.files[0];
+      this.setImagePreviewInObj(s,this.r.fssaiLicensePhoto)
+    }
+    if(s=='gstlicensePhoto')
+    {
+     this.r.gstlicensePhoto=event.target.files[0];
+     this.setImagePreviewInObj(s,this.r.gstlicensePhoto)
+    }
+  }
+
+  setImagePreviewInObj(event:any,file:any){
+    this.file = file
+    this.reader = new FileReader();
+   if(event === 'imageName')
+   {
+     this.reader.onload = () => {
+       this.imageName = this.reader.result as string;
+     };
+   }
+   if(event === 'fssaiLicensePhoto')
+   {
+    this.reader.onload = () => {
+      this.fssaiLicensePhoto = this.reader.result as string;
+    };
+   }
+   if(event === 'gstlicensePhoto')
+   {
+    this.reader.onload = () => {
+      this.gstlicensePhoto = this.reader.result as string;
+    };
+   }
+   this.reader.readAsDataURL(this.file);
   }
 }

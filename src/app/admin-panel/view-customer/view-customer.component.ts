@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { ApiRoutes } from 'src/app/Utils/api-routes';
 import { CurrentUserResponse } from 'src/app/payload/Response/current-user-response';
 import { AdminService } from 'src/app/servicce/admin.service';
 
@@ -14,8 +15,10 @@ export class ViewCustomerComponent implements AfterViewInit{
   itemPerPage :number= 10;
   length: number = 0;
   user:CurrentUserResponse[]=[];
+  imageUrl:any
   ngAfterViewInit(): void {
    this.getAllCustomer(this.currentpage,this.itemPerPage);
+   this.imageUrl = ApiRoutes.IMAGE_URL
   }
  
   getAllCustomer(pageno:number,itemPerPage:number)

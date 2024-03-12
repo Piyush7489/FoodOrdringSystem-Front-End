@@ -29,6 +29,7 @@ import { NewPassForForgetPassComponent } from './Comman-components/new-pass-for-
 import { ChanggPassComponent } from './Comman-components/changg-pass/changg-pass.component';
 import { ViewCustomerComponent } from './admin-panel/view-customer/view-customer.component';
 import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.component';
+import { UpdateUserComponent } from './Comman-components/update-user/update-user.component';
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:'verify-otp-for-forget-password' ,component:VerificationOtpForForgetPasswordComponent},
   {path:'new-pass',component:NewPassForForgetPassComponent},
   {path:'verify-otp',component:VerifyOtpComponent,canActivate:[otpGuard]},
+  
 
   {path:'admin',component:AdminPortalComponent,
     canActivate:[adminGuard],
@@ -53,6 +55,7 @@ const routes: Routes = [
     {path:'view-restaurant',component:ViewRestaurantComponent},
     {path:'customer-list',component:ViewCustomerComponent},
     {path:'owner-list',component:ViewOwnersComponent},
+    {path:'update-user',component:UpdateUserComponent},
   ]},
   {path:'owner',component:OwnerportalComponent,
    canActivate:[ownerGuard],
@@ -62,7 +65,7 @@ const routes: Routes = [
     {path:'view-restaurant',component:OwnerViewRestaurantComponent},
     {path:'add-food',component:AddFoodComponent},
     {path:'view-food',component:ViewFoodComponent},
-    
+    {path:'update-user',component:UpdateUserComponent},
   ]},
   
 ];
