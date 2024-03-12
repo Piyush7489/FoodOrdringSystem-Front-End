@@ -68,7 +68,9 @@ flag=false;
 
   updateFoodRequest:UpdateFoodRequest=new UpdateFoodRequest();
   updateFood(food: any) {
-     this.foodPhoto = food.imageName;
+    
+    
+    this.foodPhoto = food.imageName;
    this.updateFoodRequest=food;
    console.log(this.updateFoodRequest);
    
@@ -93,6 +95,7 @@ flag=false;
    }
   }
   afterUpdate:any;
+  index:any;
   updateChanges() {
     this.updateFoodForm.markAllAsTouched();
     console.log(this.updateFoodRequest);
@@ -104,7 +107,8 @@ flag=false;
           title: data.message,
           timer: 3000
         })
-        this.afterUpdate=data.data;
+        this.v[this.index].imageName = data.data.imageName;
+        alert(this.foodPhoto)
         console.table(this.afterUpdate);
         this.closeModal();
       })

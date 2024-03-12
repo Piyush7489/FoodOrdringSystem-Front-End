@@ -19,15 +19,20 @@ export class ViewAllCategoryComponent implements AfterViewInit {
       catName:['',[Validators.required]],
       catDescription:['',[Validators.required]],
      });
+     this.expanded = new Array(this.v.length).fill(false);
+ 
   }
 
-  
   categoryForm!:FormGroup;
   currentpage :number= 0;
   itemPerPage :number= 10;
   length: number = 0;
- 
+  expanded: boolean[] = [];
 
+  toggleDescription(index:number) {
+   this.expanded[index]=!this.expanded[index];
+   
+  }
   v: ViewCategoryResponse[] = [];
   catResponse:ViewCategoryResponse = new ViewCategoryResponse;
   ngAfterViewInit(): void {

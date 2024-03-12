@@ -53,6 +53,7 @@ import { ViewCustomerComponent } from './admin-panel/view-customer/view-customer
 import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.component';
 
 import { MatSelectModule } from '@angular/material/select';
+import { SliceWordPipe } from './custom-pipe/slice-word.pipe';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { MatSelectModule } from '@angular/material/select';
     ChanggPassComponent,
     ViewCustomerComponent,
     ViewOwnersComponent,
+    SliceWordPipe,
   ],
   imports: [
     BrowserModule,

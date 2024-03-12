@@ -148,6 +148,5 @@ rejectRestaurant(id:any)
     }
   })
   this.closeRestaurantModel();
- 
 }
 }
