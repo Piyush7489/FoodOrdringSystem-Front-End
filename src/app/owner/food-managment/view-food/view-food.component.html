@@ -6,7 +6,7 @@
   </div>
 </div>
 <div class="card-container">
-  <div class="card" style="width: 18rem;" *ngFor="let f of v">
+  <div class="card" style="width: 18rem;" *ngFor="let f of v ; let i=index">
     <h3><strong>Restaurant:-</strong>{{f.foodRestaurantname}}</h3>
     <!-- Card content -->
     <img class="card-img-top" [src]="f.imageName" alt="Card image cap">
@@ -25,7 +25,7 @@
       </li>
     </ul>
     <div class="d-flex justify-content-center mt-3">
-      <button class="btn btn-primary " (click)="updateFood(f)" ><i class="bi bi-pencil"></i></button>
+      <button class="btn btn-primary "  (click)="index=i"  (click)="updateFood(f)" ><i class="bi bi-pencil"></i></button>
       <button class="btn btn-danger"  ><i class="bi bi-trash"></i></button>
     </div>
   </div>

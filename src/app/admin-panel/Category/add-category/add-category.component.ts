@@ -12,22 +12,20 @@ import { GlobalCategoryService } from 'src/app/servicce/global-category.service'
 })
 export class AddCategoryComponent implements OnInit{
 
-  constructor(private router:Router,private service:GlobalCategoryService,private fb:FormBuilder){}
+  constructor(private router:Router,private service:GlobalCategoryService,private fb:FormBuilder){
+    this.categoryForm=this.fb.group({
+      catName:['',[Validators.required,Validators.minLength(3)]],
+      catDescription:['',[Validators.required,Validators.minLength(15)]],
+     });
+  }
   ngOnInit(): void {
-    this.checkCategoryFormValidation();
+    // this.checkCategoryFormValidation();
   }
   categoryReq:CategoryRequest = new CategoryRequest;
   categoryForm!:FormGroup;
 
 
-  checkCategoryFormValidation()
-  {
-    
-       this.categoryForm=this.fb.group({
-        catName:['',[Validators.required]],
-        catDescription:['',[Validators.required]],
-       });
-  }
+  
 
   formSubmit()
   {

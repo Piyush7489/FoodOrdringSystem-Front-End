@@ -14,6 +14,10 @@
             </div>
           </div>
           <div class="card-body">
+            <div *ngIf="v.isBlocked === block" class="container text-center">
+              <p><strong>This restaurant is blocked.</strong></p>
+              <img src="../../../../assets/images/block.png" alt="Blocked" />
+          </div>
             <p class="card-text"><strong>About Restaurant:-</strong> {{v.restDescription}}</p>
             <table class="table">
               <thead>
@@ -76,7 +80,7 @@
                
               </tbody>
               <div class=" container text-center">
-                <button class="btn btn-success bt-size"  (click)="index=i" (click)="updateRestaurantModule(v.restId)"><i class="bi bi-pencil"></i></button>
+                <button class="btn btn-success bt-size" [disabled]="v.isApprove===unverified || v.isBlocked===block"  (click)="index=i" (click)="updateRestaurantModule(v.restId)"><i class="bi bi-pencil"></i></button>
                 <button class="btn btn-primary bt1"><i class="bi bi-eye"></i></button>
                 <button class="btn btn-danger bt2"><i class="bi bi-trash"></i></button>
             </div> 
@@ -95,7 +99,8 @@
                 </div>
                 <form [formGroup]="updateRestForm">
                   <!-- Part 1: Restaurant Information -->
-                  <div class="form-group"> 
+                  <div class="form-body">
+                  <div class="form-group mb-3"> 
                       <label for="restName">Restaurant Name:</label>
                       <input type="text" class="form-control" formControlName="restName" [(ngModel)]="updateRestResponse.restName" required>
                       <div class="error" *ngIf="updateRestForm.get('restName')?.hasError('required') && updateRestForm.get('restName')?.touched">
@@ -103,14 +108,14 @@
                         </div>
                   </div>
                   <div class="form-row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="restOpenTime">Opening Time:</label>
                           <input type="time" class="form-control timepicker" formControlName="restOpenTime" [(ngModel)]="updateRestResponse.restOpenTime" required>
                           <div class="error" *ngIf="updateRestForm.get('restOpenTime')?.hasError('required') && updateRestForm.get('restOpenTime')?.touched">
                               Open Time is required.
                             </div>
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="restCloseTime">Closing Time:</label>
                           <input type="time" class="form-control timepicker" formControlName="restCloseTime" [(ngModel)]="updateRestResponse.restCloseTime" required>
                           <div class="error" *ngIf="updateRestForm.get('restCloseTime')?.hasError('required') && updateRestForm.get('restCloseTime')?.touched">
@@ -118,25 +123,17 @@
                             </div>
                       </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group mb-3">
                       <label for="restDescription">Description:</label>
                       <textarea class="form-control" formControlName="restDescription" rows="3" [(ngModel)]="updateRestResponse.restDescription" required></textarea>
                       <div class="error" *ngIf="updateRestForm.get('restDescription')?.hasError('required') && updateRestForm.get('restDescription')?.touched">
                           Description is required.
                         </div>
                   </div>
-                  <!-- <div class="form-group">
-                      <label for="restaurantImage">Restaurant Image:</label>
-                      <input type="file" class="form-control-file" id="restaurantImage"  formControlName="restaurantImage"  required (change)="setImage($event)">
-  
-                      <div class="error" *ngIf="updateRestForm.get('restaurantImage')?.hasError('required') && updateRestForm.get('restaurantImage')?.touched">
-                          Restaurant Image is required.
-                        </div>
-                  </div> -->
                   <div class="col"><strong>Restaurant Image</strong>
                     <img [src]="restPhoto" class="card-img-top small-image" alt="{{updateRestResponse.restName}}" width="100" height="100" >
                   </div>
-                  <div class="form-group">
+                  <div class="form-group mb-3">
                     <label for="restaurantImage">Choose Restaurant Image:</label>
                     <input type="file" class="form-control-file" id="restaurantImage"  formControlName="restaurantImage" required (change)="setImage($event)">
                 </div>
@@ -144,14 +141,14 @@
                   <!-- Part 2: Address Information -->
                   <h4 class="mt-5">Address Information</h4>
                   <div class="form-row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="street">Street:</label>
                           <input type="text" class="form-control" formControlName="street" [(ngModel)]="updateRestResponse.street" required>
                           <div class="error" *ngIf="updateRestForm.get('street')?.hasError('required') && updateRestForm.get('street')?.touched">
                               Street is required.
                             </div>
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="city">City:</label>
                           <input type="text" class="form-control" formControlName="city" [(ngModel)]="updateRestResponse.city" required>
                           <div class="error" *ngIf="updateRestForm.get('city')?.hasError('required') && updateRestForm.get('city')?.touched">
@@ -160,14 +157,14 @@
                       </div>
                   </div>
                   <div class="form-row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="state">State:</label>
                           <input type="text" class="form-control" formControlName="state" [(ngModel)]="updateRestResponse.state" required>
                           <div class="error" *ngIf="updateRestForm.get('state')?.hasError('required') && updateRestForm.get('state')?.touched">
                               State is required.
                             </div>
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="zipCode">Zip Code:</label>
                           <input type="text" class="form-control" formControlName="zipCode" [(ngModel)]="updateRestResponse.zipCode" required>
                           <div class="error" *ngIf="updateRestForm.get('zipCode')?.hasError('required') && updateRestForm.get('zipCode')?.touched">
@@ -176,14 +173,14 @@
                       </div>
                   </div>
                   <div class="form-row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="latitude">Latitude:</label>
                           <input type="text" class="form-control" formControlName="latitude" [(ngModel)]="updateRestResponse.latitude" required>
                           <div class="error" *ngIf="updateRestForm.get('latitude')?.hasError('required') && updateRestForm.get('latitude')?.touched">
                               latituse is required.
                             </div>
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6 mb-3">
                           <label for="longitude">Longitude:</label>
                           <input type="text" class="form-control" formControlName="longitude" [(ngModel)]="updateRestResponse.longitude" required>
                           <div class="error" *ngIf="updateRestForm.get('longitude')?.hasError('required') && updateRestForm.get('longitude')?.touched">
@@ -192,7 +189,7 @@
                       </div>
                   </div>
                   <div class="form-row">
-                  <div class="form-group col-md-12">
+                  <div class="form-group col-md-12 mb-3">
                       <label for="contect">Contect:</label>
                       <input type="text" class="form-control" formControlName="restContect" [(ngModel)]="updateRestResponse.restContect" required>
                       <div class="error" *ngIf="updateRestForm.get('restContect')?.hasError('required') && updateRestForm.get('restContect')?.touched">
@@ -200,8 +197,12 @@
                         </div>
                   </div>
               </div>
-                  <button type="submit" class="btn btn-primary" (click)="updateRestaurant()" >Submit</button>
-              </form>
+
+                  <div class="d-flex justify-content-center mb-3">
+                    <button type="submit" class="btn btn-primary" (click)="updateRestaurant()" >Submit</button>
+                  </div>
+                </div>
+                </form>
             </div>
         </div>
     </div>

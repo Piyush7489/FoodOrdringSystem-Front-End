@@ -43,6 +43,7 @@ export class OwnerViewRestaurantComponent implements AfterViewInit {
   viewRest: ViewRestaurantOfOwnerByAdmin[] = [];
   verified = ApiRoutes.VERIFIED;
   unverified = ApiRoutes.UNVERIFIED;
+  block=ApiRoutes.BLOCK
   getAllRestOfOwner() {
     this.service.getRestaurantOfOwner().subscribe((data: any) => {
       this.viewRest = data.message;
@@ -106,9 +107,11 @@ export class OwnerViewRestaurantComponent implements AfterViewInit {
       this.afterUpdate=data.data;
       this.viewRest[this.index] = this.afterUpdate;
       this.viewRest[this.index].createdat=this.afterUpdate.createdAt
-      
       // this.restPhoto = ''
-      console.table(data);
+      this.viewRest[this.index].fssaiLicenceNo=this.afterUpdate.fssaiLicencePhoto
+      
+      
+      console.table(this.viewRest[this.index].fssaiLicencePhoto);
       this.closeModal();
     })
   }
