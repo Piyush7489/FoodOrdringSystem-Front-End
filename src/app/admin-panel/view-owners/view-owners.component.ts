@@ -12,6 +12,7 @@ import { AdminService } from 'src/app/servicce/admin.service';
 export class ViewOwnersComponent implements AfterViewInit {
 
   verified=ApiRoutes.VERIFIED;
+  imageUrl = ApiRoutes.IMAGE_URL
   unverified=ApiRoutes.UNVERIFIED;
   constructor(private service:AdminService){}
   ngAfterViewInit(): void {
