@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./view-restaurant.component.css']
 })
 export class ViewRestaurantComponent implements AfterViewInit {
+  imageUrl = ApiRoutes.IMAGE_URL
 onChange(rest:any) {
 if(rest.isBlocked==this.block)
 {

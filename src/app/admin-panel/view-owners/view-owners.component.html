@@ -21,7 +21,7 @@
                 <th scope="row">{{u.userId}}</th>
                 <td > 
                     <div class="profile-picture">
-                    <img [src]="u.profilePhoto"alt="Profile Picture">
+                    <img [src]="imageUrl+u.profilePhoto"alt="Profile Picture">
                    </div>
                </td>
                 <td>{{u.firstName}} {{u.lastName}}</td>
@@ -56,13 +56,13 @@
         <h2><strong>Restaurant's Name:-</strong>{{v.restName}}</h2>
         <div class="row">
           <div class="col"><strong>Restaurant Image</strong>
-            <img src="{{v.restImage}}" class="card-img-top small-image" alt="{{v.restName}}">
+            <img [src]="imageUrl+ v.restImage" class="card-img-top small-image" alt="{{v.restName}}">
           </div>
           <div class="col"><strong>GST Licence Image</strong>
-            <img src="{{v.gstLicencePhoto}}" class="card-img-top small-image" alt="{{v.restName}}">
+            <img [src]="imageUrl+ v.gstLicencePhoto" class="card-img-top small-image" alt="{{v.restName}}">
           </div>
           <div class="col"><strong>FSSAI Licence Image</strong>
-            <img src="{{v.fssaiLicencePhoto}}" class="card-img-top small-image" alt="{{v.restName}}">
+            <img [src]="imageUrl+ v.fssaiLicencePhoto" class="card-img-top small-image" alt="{{v.restName}}">
           </div>
         </div>
         <div class="card-body">
