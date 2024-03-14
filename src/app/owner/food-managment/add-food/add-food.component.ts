@@ -59,7 +59,7 @@ export class AddFoodComponent implements AfterViewInit{
       })
    
     })
-      this.router.navigate(['owner/'])
+      this.router.navigate(['owner/view-food'])
     }
     isDropdownOpen: boolean = false;
     toggleDropdown() {

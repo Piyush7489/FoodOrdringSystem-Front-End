@@ -45,7 +45,7 @@
     <select class="form-select" aria-label="Select a restaurant" #selectElement (change)="selectRest(selectElement.value)">
       <option *ngFor="let restaurant of restName" [value]="restaurant.rid">{{ restaurant.rname }}</option>
     </select> -->
-    {{selectedRestaurantId|json}}
+    
     <mat-form-field appearance="outline" class="mt full-width">
       <mat-label>Select Restaurant</mat-label>
       <mat-select (selectionChange)="selectRest($event.value)" name="restaurant"  [(ngModel)]="selectedRestaurantId" >

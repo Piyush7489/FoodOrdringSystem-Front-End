@@ -59,4 +59,9 @@ export class RestautantService {
   {
     return this.http.get(ApiRoutes.REST_NAME_OF_OWNER);
   }
+
+  public getResataurantCategory(restId:any)
+  {
+    return this.http.get(ApiRoutes.VIEW_REST_CATEGORY+`${restId}`);
+  }
 }

@@ -27,4 +27,18 @@
     overflow: visible;
     white-space: normal;
   }
+  td img {
+    /* Your default styles here */
+    width: 100px; /* for example */
+    height: auto; /* for maintaining aspect ratio */
+    border-radius: 5px; /* for rounded corners */
+    /* Add any other default styles you want */
+    transition: transform 0.3s ease; /* for smooth transition */
+  }
+  
+  td img:hover {
+    /* Your hover styles here */
+    transform: scale(1.1); /* for example */
+    /* Add any other hover styles you want */
+  }
   

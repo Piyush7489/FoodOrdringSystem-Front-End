@@ -12,10 +12,12 @@ import { GlobalCategoryService } from 'src/app/servicce/global-category.service'
 })
 export class AddCategoryComponent implements OnInit{
 
+
   constructor(private router:Router,private service:GlobalCategoryService,private fb:FormBuilder){
     this.categoryForm=this.fb.group({
       catName:['',[Validators.required,Validators.minLength(3)]],
       catDescription:['',[Validators.required,Validators.minLength(15)]],
+      catImage:['',[Validators.required]]
      });
   }
   ngOnInit(): void {
@@ -26,7 +28,10 @@ export class AddCategoryComponent implements OnInit{
 
 
   
-
+  setImage(event: any) {
+    this.categoryReq.catImage = event.target.files[0];
+    }
+    
   formSubmit()
   {
      
@@ -46,4 +51,7 @@ export class AddCategoryComponent implements OnInit{
       this.router.navigate(['/admin/view-category']);
     })
   }
+
+
+  
 }

@@ -81,7 +81,7 @@
               </tbody>
               <div class=" container text-center">
                 <button class="btn btn-success bt-size" [disabled]="v.isApprove===unverified || v.isBlocked===block"  (click)="index=i" (click)="updateRestaurantModule(v.restId)"><i class="bi bi-pencil"></i></button>
-                <button class="btn btn-primary bt1"><i class="bi bi-eye"></i></button>
+                <button class="btn btn-primary bt1" routerLink="/owner/visit-rest-by-owner/{{v.restId}}"><i class="bi bi-eye"></i></button>
                 <button class="btn btn-danger bt2"><i class="bi bi-trash"></i></button>
             </div> 
             </table>

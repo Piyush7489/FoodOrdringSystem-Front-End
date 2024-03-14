@@ -58,12 +58,12 @@ export class RegisterRestaurantComponent implements AfterViewInit {
     Toasts.fire({
       icon: 'success',
       text: data.message,
-      timer: 3000
+      timer: 5000
     });
    })
    setTimeout(() => {
     this.router.navigate(['owner/'])
-  }, 5000);
+  }, 8000);
   }
 
   
