@@ -30,6 +30,7 @@ import { ChanggPassComponent } from './Comman-components/changg-pass/changg-pass
 import { ViewCustomerComponent } from './admin-panel/view-customer/view-customer.component';
 import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.component';
 import { UpdateUserComponent } from './Comman-components/update-user/update-user.component';
+import { ViewRestaurantByOwnerComponent } from './owner/view-restaurant-by-owner/view-restaurant-by-owner.component';
 
 
 
@@ -66,6 +67,7 @@ const routes: Routes = [
     {path:'add-food',component:AddFoodComponent},
     {path:'view-food',component:ViewFoodComponent},
     {path:'update-user',component:UpdateUserComponent},
+    {path:'visit-rest-by-owner/:restId',component:ViewRestaurantByOwnerComponent}
   ]},
   
 ];

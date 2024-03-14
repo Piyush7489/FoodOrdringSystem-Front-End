@@ -127,7 +127,7 @@
                 </div>
                 <div class="form-group">
                     <label for="gstLicensePhoto">GST License Photo:</label>
-                    <input type="file" class="form-control-file" formControlName="gstlicensePhoto" [(ngModel)]="r.gstlicensePhoto" required  (change)="setImage($event,'gstlicensePhoto')">
+                    <input type="file" class="form-control-file" formControlName="gstlicensePhoto"  required  (change)="setImage($event,'gstlicensePhoto')">
                     <img *ngIf="gstlicensePhoto" [src]="gstlicensePhoto" alt="" height="100" width="100" class = "document-images">
                     <div class="error" *ngIf="restRegForm.get('gstlicensePhoto')?.hasError('required') && restRegForm.get('gstlicensePhoto')?.touched">
                         Gst License is required.
@@ -145,7 +145,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fssaiLicensePhoto">FSSAI License Photo:</label>
-                    <input type="file" class="form-control-file" formControlName="fssaiLicensePhoto" [(ngModel)]="r.fssaiLicensePhoto" required (change)="setImage($event,'fssaiLicensePhoto')">
+                    <input type="file" class="form-control-file" formControlName="fssaiLicensePhoto" required (change)="setImage($event,'fssaiLicensePhoto')">
                     <img *ngIf="fssaiLicensePhoto" [src]="fssaiLicensePhoto" alt="" height="100" width="100" class = "document-images">
                     <div class="error" *ngIf="restRegForm.get('fssaiLicensePhoto')?.hasError('required') && restRegForm.get('fssaiLicensePhoto')?.touched">
                         Fssai Licence  is required.

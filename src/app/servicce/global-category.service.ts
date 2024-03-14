@@ -14,7 +14,11 @@ export class GlobalCategoryService {
 
   public AddCategory(category:any)
   {
-         return this.http.post(ApiRoutes.ADD_CATEGORY,category);
+         const formdata= new FormData();
+         formdata.append('catImage',category.catImage)
+         category.catImage='';
+         formdata.append('category',JSON.stringify(category));
+         return this.http.post(ApiRoutes.ADD_CATEGORY,formdata);
   }
 
   public getCategoryById(id:any)
@@ -49,5 +53,15 @@ export class GlobalCategoryService {
   public getAllCatnameOfRestaurant(restId:any)
   {
     return this.http.get(ApiRoutes.REST_CAT_NAME+`${restId}`)
+  }
+
+  public getextraCategory(restId:any)
+  {
+    return this.http.get(ApiRoutes.EXTRA_CAT_NAME_OF_RESTAUrANT+`${restId}`)
+  }
+
+  public addCategoryInRestaurant(rc:any)
+  {
+    return this.http.post(ApiRoutes.ADD_CATEGORY_IN_RESTAURANT,rc);
   }
 }

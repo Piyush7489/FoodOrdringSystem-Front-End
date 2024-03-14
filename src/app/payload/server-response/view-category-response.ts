@@ -4,7 +4,7 @@ export class ViewCategoryResponse
     catName='';
     catDescription='';
     isActive:boolean | undefined;
-
+    catImage='';
 }
 
 

@@ -9,7 +9,7 @@
       <div class="bootstrap-wrapper">
           <div class="row">
               <div class="col-md-8 offset-md-2">
-                  <form [formGroup]="categoryForm">
+                  <form [formGroup]="categoryForm">{{categoryReq|json}}
                       <div class="form-group">
                           <input type="text" class="form-control form-control-lg" formControlName="catName" [(ngModel)]="categoryReq.catName" placeholder="Enter Category Name">
 
@@ -39,6 +39,14 @@
                             </div>
                           </div>
                       </div>
+                      <div class="form-group">
+                        
+                        <label for="food-image">Food Image:</label>
+                        <input type="file"  id="food-image" name="food-image" accept="image/*" formControlName="catImage"(change)="setImage($event)">
+                        <div class="error" *ngIf="categoryForm.get('catImage')?.hasError('required') && categoryForm.get('catImage')?.touched">
+                          CategoryImage  is required.
+                        </div>
+                    </div>
                       <div class="container text-center">
                           <button mat-raised-button color="primary" (click)="formSubmit()">Add</button>
                       </div>

@@ -1,0 +1,60 @@
+<div id="content">
+<div class="container text-center">
+    <button type="button" class="btn btn-primary" (click)="addCategory()"> Add Category</button>
+</div>
+<div class="container" >
+ <div class="row">
+    <div class="col-md-3" *ngFor="let i of cat">
+<mat-card class="example-card " >
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{i.catName}}</mat-card-title>
+        <mat-card-subtitle>{{i.catDescription}}</mat-card-subtitle>
+        <img mat-card-sm-image [src]="i.catImage"  >
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="addCatModel" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="updateModalLabel">Select Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button> -->
+               <div class="container">
+                
+                <form (ngSubmit)="submitCategory()" class="category-form">
+                  <div class="row">
+                    <div *ngFor="let category of extraCat" class="category-item col-md-3">
+                      <label class="category-label">
+                        <input type="radio" [value]="category.catId" (change)="onCategorySelect($event, category.catId)" class="category-input">
+                        <br>
+                        <span class="category-name">{{ category.catName }}</span> 
+                        <img [src]="category.catImage" alt="" class="category-image">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="submitCategory()">Submit</button>
+                </div>
+
+                </form>
+                
+               </div>
+
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
+
+
+
