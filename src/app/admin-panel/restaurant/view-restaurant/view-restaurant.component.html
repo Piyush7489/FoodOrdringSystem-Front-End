@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of PaginatedData; let i=index">
-                <th scope="row">{{i}}</th>
+                <th scope="row">{{i+1}}</th>
                 <td>{{item.restName}}</td>
                 <td>{{item.restDescription}}</td>
                 <td>{{item.currentStatus}}</td>
@@ -73,7 +73,7 @@
             <div class="card-container">
                 <!-- First card -->
                 <div class="card single-card text-center">
-                    <img [src]="verification.restImage" class="card-img-top custom-img mx-auto" alt="...">
+                    <img [src]="imageUrl+verification.restImage" class="card-img-top custom-img mx-auto" alt="...">
                     <div class="card-body">
                         <h4 class="card-title">{{verification.restname}}</h4>
                     </div>
@@ -84,7 +84,7 @@
                 <!-- Second row with two cards -->
                 <div class="card">
                     <h1 class="card-title">Gst Licence</h1>
-                    <img [src]="verification.gstLicencePhoto" class="card-img-top" alt="...">
+                    <img [src]="imageUrl+ verification.gstLicencePhoto" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{verification.gstlicenseNo}}</h5>
                         
@@ -92,7 +92,7 @@
                 </div>
                 <div class="card">
                     <h1 class="card-title">Fssai Licence</h1>
-                    <img [src]="verification.fssaiLicencePhoto" class="card-img-top" alt="...">
+                    <img [src]="imageUrl+ verification.fssaiLicencePhoto" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{verification.fssaiLicenceNo}}pp</h5>
                         

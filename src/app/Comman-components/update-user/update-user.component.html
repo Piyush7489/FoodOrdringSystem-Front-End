@@ -11,28 +11,28 @@
         <br>
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" [(ngModel)]="currentUser.firstName" id="firstName" name="firstName"
+            <input type="text" [(ngModel)]="updateRequest.firstName" id="firstName" name="firstName"
                 placeholder="Enter your First Name" required>
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" [(ngModel)]="currentUser.lastName" name="lastName"
+            <input type="text" id="lastName" [(ngModel)]="updateRequest.lastName" name="lastName"
                 placeholder="Enter your Last Name" required>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" [(ngModel)]="currentUser.email" disabled
+            <input type="email" id="email" name="email" [(ngModel)]="updateRequest.email" disabled
                 placeholder="Enter your email" required>
         </div>
         <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" [(ngModel)]="currentUser.mob"
+            <input type="tel" id="phone" name="phone" [(ngModel)]="updateRequest.mob"
                 placeholder="Enter your phone number" required>
         </div>
         <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" id="address" name="address" [(ngModel)]="currentUser.tempAddress"
+            <input type="text" id="address" name="address" [(ngModel)]="updateRequest.tempAddress"
                 placeholder="Enter your address" required>
         </div>
         <button type="submit" class="btn">Update Profile</button>

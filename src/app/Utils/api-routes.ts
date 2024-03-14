@@ -3,7 +3,7 @@ export class ApiRoutes {
  // BASE URL OF LOCAL SERVER
  private static BASE_URL = 'http://localhost:9090/api/v1';
 // URL FOR GET IMAGE FROM BACK-END
-public static IMAGE_URL= 'https://res.cloudinary.com/dxd4dtpvi/image/upload/v1706944331/';
+public static IMAGE_URL= 'https://res.cloudinary.com/dsazylekr/image/upload/v1706944331/';
 
 
 // AUTH URLS
@@ -58,7 +58,13 @@ public static ADD_FOOD=this.BASE_URL+'/food/save'
 public static UPDATE_FOOD=this.BASE_URL+'/food/update-food'
 public static REST_NAME_OF_OWNER=this.BASE_URL+'/rest/rest-name-of-owner'
 public static REST_CAT_NAME=this.BASE_URL+'/globalCategory/cat-name/'
+
 public static VIEW_REST_CATEGORY=this.BASE_URL+'/rest/cat-of-rest/'
 public static EXTRA_CAT_NAME_OF_RESTAUrANT=this.BASE_URL+'/globalCategory/extra-cat-add/'
 public static ADD_CATEGORY_IN_RESTAURANT=this.BASE_URL+'/globalCategory/add-category'
+
+  
+// COMMAN URLS
+public static UPDATE_USER = this.BASE_URL+'/auth/update-user/'
+
 }

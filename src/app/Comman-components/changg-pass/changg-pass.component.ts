@@ -105,4 +105,6 @@ export class ChanggPassComponent implements OnInit {
     }
     console.log(this.changePassword);
   }
+
+ 
 }

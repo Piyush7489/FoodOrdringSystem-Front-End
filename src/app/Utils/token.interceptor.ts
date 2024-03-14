@@ -44,6 +44,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (error.status === 401 || error.status === 0) {
           //alert('hi')
           if (this.login.isTokenExpired()) {
+            localStorage.clear()
             Toast.fire({
               icon: 'error',
               title: 'Session Expired  !!'

@@ -1,6 +1,6 @@
 export class CurrentUserResponse {
 
-    userId: number = 0;
+    userId: string = '';
     firstName: string = '';
     lastName: string = '';
     email: string = '';

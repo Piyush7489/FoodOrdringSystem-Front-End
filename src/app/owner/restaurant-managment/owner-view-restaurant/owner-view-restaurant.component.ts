@@ -41,6 +41,7 @@ export class OwnerViewRestaurantComponent implements AfterViewInit {
   }
 
   viewRest: ViewRestaurantOfOwnerByAdmin[] = [];
+  imageUrl = ApiRoutes.IMAGE_URL
   verified = ApiRoutes.VERIFIED;
   unverified = ApiRoutes.UNVERIFIED;
   block=ApiRoutes.BLOCK
