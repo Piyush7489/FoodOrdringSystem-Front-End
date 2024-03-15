@@ -58,6 +58,8 @@ public static ADD_FOOD=this.BASE_URL+'/food/save'
 public static UPDATE_FOOD=this.BASE_URL+'/food/update-food'
 public static REST_NAME_OF_OWNER=this.BASE_URL+'/rest/rest-name-of-owner'
 public static REST_CAT_NAME=this.BASE_URL+'/globalCategory/cat-name/'
+public static REST_STAUS_COUNT=this.BASE_URL+'/rest/rest-status-count'
+public static COUNT_BOY_AND_CUSTOMER=this.BASE_URL+'/admin/customer-boy-count'
 
 public static VIEW_REST_CATEGORY=this.BASE_URL+'/rest/cat-of-rest/'
 public static EXTRA_CAT_NAME_OF_RESTAUrANT=this.BASE_URL+'/globalCategory/extra-cat-add/'

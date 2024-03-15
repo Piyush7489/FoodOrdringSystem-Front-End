@@ -42,9 +42,12 @@
                       <div class="form-group">
                         
                         <label for="food-image">Food Image:</label>
-                        <input type="file"  id="food-image" name="food-image" accept="image/*" formControlName="catImage"(change)="setImage($event)">
+                        <input type="file" (change)="onChangeImage($event)" id="food-image" name="food-image" accept="image/*" formControlName="catImage"(change)="setImage($event)">
                         <div class="error" *ngIf="categoryForm.get('catImage')?.hasError('required') && categoryForm.get('catImage')?.touched">
                           CategoryImage  is required.
+                        </div>
+                        <div>
+                          <img *ngIf="categoryImagePreview" [src]="categoryImagePreview" width="100" height="100" alt="">
                         </div>
                     </div>
                       <div class="container text-center">

@@ -11,48 +11,60 @@ import Swal from 'sweetalert2';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit{
+export class NavBarComponent implements OnInit {
   public isLoggedIn = false;
-  constructor(public login:AuthService,private router:Router){}
-  currentUser:CurrentUserResponse = new CurrentUserResponse;
-  imagePreview:any;
-  userRole:any
+  constructor(public login: AuthService, private router: Router) { }
+  currentUser: CurrentUserResponse = new CurrentUserResponse;
+  imagePreview: any;
+  userRole: any
   ngOnInit(): void {
 
     this.getCurrentUser();
     this.isLogin();
-  
+
   }
 
-  getCurrentUser()
-  {
+  getCurrentUser() {
     this.login.loginUserData.subscribe({
-      next:(data:any)=>{
-        this.currentUser = data.message
-        this.userRole = this.currentUser.userRole
-        this.imagePreview = ApiRoutes.IMAGE_URL+this.currentUser.profilePhoto
+      next: (data: any) => {
+        if (data != null) {
+          console.log("IF");
+
+          this.setDataInCurrentUser(data.message)
+        }
+        else {
+          console.log("ELSE");
+
+          this.login.getCurrentUser().subscribe({
+            next: data => {
+              console.log(data.message);
+              this.setDataInCurrentUser(data.message)
+
+            }
+          })
+        }
+
+
       }
     })
   }
 
-  isLogin()
-  {
-    this.login.isLoggedIn().subscribe((loggedIn:boolean)=>{
-      this.isLoggedIn=loggedIn;
+  isLogin() {
+    this.login.isLoggedIn().subscribe((loggedIn: boolean) => {
+      this.isLoggedIn = loggedIn;
     });
   }
 
-  logout()
-  {
+  logout() {
 
     Swal.fire({
       title: "Do you want to Logout your account?",
       showDenyButton: true,
       confirmButtonText: "Logout",
-      confirmButtonColor:'red',
+      confirmButtonColor: 'red',
       denyButtonText: `Don't Logout`,
-      denyButtonColor:'blue',
-      icon:'info'
+      denyButtonColor: 'blue',
+      icon: 'info'
     }).then((result) => {
       if (result.isConfirmed) {
         this.login.currentUser.next(null);
@@ -73,4 +85,9 @@ export class NavBarComponent implements OnInit{
     });
   }
 
+  setDataInCurrentUser(data: any) {
+    this.currentUser = data
+    this.userRole = this.currentUser.userRole
+    this.imagePreview = ApiRoutes.IMAGE_URL + this.currentUser.profilePhoto
+  }
 }

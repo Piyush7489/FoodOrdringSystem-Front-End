@@ -17,8 +17,8 @@
             <div class="col-md-6 mb-4 stretch-card transparent">
               <div class="card card-tale">
                 <div class="card-body">
-                  <h4 class="mb-4">Total Restaurants</h4>
-                  <p class="fs-30 mb-2">4006</p>
+                  <h4 class="mb-4">Total Number of Restaurants</h4>
+                  <p class="fs-30 mb-2">{{statusCount.totalCount| statusCount}}</p>
                  
                 </div>
               </div>
@@ -26,8 +26,11 @@
             <div class="col-md-6 mb-4 stretch-card transparent">
               <div class="card card-dark-blue">
                 <div class="card-body">
-                  <h4 class="mb-4">Total Verified Restaurant</h4>
-                  <p class="fs-30 mb-2">61344</p>
+                  <h4 class="mb-4">Total Verified Restaurant <mat-icon class="verified-icon">
+                    verified
+                  </mat-icon> </h4>
+                 
+                  <p class="fs-30 mb-2">{{statusCount.verifiedCount|statusCount}}</p>
                   
                 </div>
               </div>
@@ -38,7 +41,7 @@
               <div class="card card-light-blue">
                 <div class="card-body">
                   <h4 class="mb-4">Total Unverified Restaurant</h4>
-                  <p class="fs-30 mb-2">34040</p>
+                  <p class="fs-30 mb-2">{{statusCount.unverifiedCount|statusCount}}</p>
                  
                 </div>
               </div>
@@ -48,28 +51,53 @@
                 <div class="card-body">
                 
                   <h4 class="mb-4">  <i class="icon-ban menu-icon"></i> Total Block Restaurant</h4>
-                  <p class="fs-30 mb-2">47033</p>
+                  <p class="fs-30 mb-2">{{statusCount.blockedCount|statusCount}} </p>
                   
                 </div>
               </div>
             </div>
+            
           </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+              <div class="card card-light-blue">
+                <div class="card-body">
+                  <h4 class="mb-4">Total Number of Customers </h4>
+                  <p class="fs-30 mb-2">{{countOfBoyAndCustomer.customerCount|statusCount}}</p>
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 stretch-card transparent">
+              <div class="card card-light-danger">
+                <div class="card-body">
+                
+                  <h4 class="mb-4">  Total Number of Delivery Boy</h4>
+                  <p class="fs-30 mb-2">{{countOfBoyAndCustomer.boyCount|statusCount}} </p>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
         </div>
         <div class="col-md-6 grid-margin transparent">
           <div class="row">
             <div class="col-md-6 mb-4 stretch-card transparent">
               <div class="card card-tale">
                 <div class="card-body">
-                  <h4 class="mb-4">Total Orders</h4>
-                  <p class="fs-30 mb-2">4006</p>
+                  <h4 class="mb-4">Total Active Restaurants</h4>
+                  <p class="fs-30 mb-2">{{statusCount.activeCount | statusCount}} </p>
                 </div>
               </div>
             </div>
             <div class="col-md-6 mb-4 stretch-card transparent">
               <div class="card card-dark-blue">
                 <div class="card-body">
-                  <h4 class="mb-4">Pending Orders</h4>
-                  <p class="fs-30 mb-2">61344</p>
+                  <h4 class="mb-4">Total Inactive Restaurants</h4>
+                  <p class="fs-30 mb-2">{{statusCount.inactiveCount|statusCount}} </p>
                 </div>
               </div>
             </div>
@@ -78,20 +106,38 @@
             <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
               <div class="card card-light-blue">
                 <div class="card-body">
-                  <h4 class="mb-4">Confirmed Order</h4>
-                  <p class="fs-30 mb-2">34040</p>
+                  <h4 class="mb-4">Total Unblocked Restaurants</h4>
+                  <p class="fs-30 mb-2">{{statusCount.unblockedCount| statusCount}}</p>
                 </div>
               </div>
             </div>
             <div class="col-md-6 stretch-card transparent">
               <div class="card card-light-danger">
                 <div class="card-body">
-                  <h4 class="mb-4">Number of Customer</h4>
-                  <p class="fs-30 mb-2">47033</p> 
+                  <h4 class="mb-4">Total Number of Users <mat-icon class="verified-icon">person</mat-icon> </h4>
+                  <p class="fs-30 mb-2">{{countOfBoyAndCustomer.totalCountOfUser|statusCount}}</p> 
                 </div>
               </div>
             </div>
           </div>
+          <div class="row mt-4">
+            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+              <div class="card card-light-blue">
+                <div class="card-body">
+                  <h4 class="mb-4">Total  Restaurant Owners</h4>
+                  <p class="fs-30 mb-2">{{countOfBoyAndCustomer.ownerCount| statusCount}}</p>
+                </div>
+              </div>
+            </div>
+           <!-- <div class="col-md-6 stretch-card transparent">
+              <div class="card card-light-danger">
+                <div class="card-body">
+                  <h4 class="mb-4">Total Number of Customer <mat-icon class="verified-icon">person</mat-icon> </h4>
+                  <p class="fs-30 mb-2">47033</p> 
+                </div>
+              </div>
+            </div>
+          </div> -->
         </div>
       </div>
       <div class="row">
