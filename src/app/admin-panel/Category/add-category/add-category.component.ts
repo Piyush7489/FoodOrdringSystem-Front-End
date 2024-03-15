@@ -12,7 +12,7 @@ import { GlobalCategoryService } from 'src/app/servicce/global-category.service'
 })
 export class AddCategoryComponent implements OnInit{
 
-
+  categoryImagePreview:any
   constructor(private router:Router,private service:GlobalCategoryService,private fb:FormBuilder){
     this.categoryForm=this.fb.group({
       catName:['',[Validators.required,Validators.minLength(3)]],
@@ -52,6 +52,19 @@ export class AddCategoryComponent implements OnInit{
     })
   }
 
-
+  onChangeImage(event:any)
+  {
+    
+      this.categoryImagePreview = event.target.files[0]
+      
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.categoryImagePreview = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+  
+    
+  }
   
 }

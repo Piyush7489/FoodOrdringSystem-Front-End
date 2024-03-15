@@ -14,9 +14,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UpdateUserComponent implements OnInit {
 
-  constructor(private login: AuthService,private router:Router,private snack:MatSnackBar) { }
+  constructor(private login: AuthService, private router: Router, private snack: MatSnackBar) { }
   currentUser: CurrentUserResponse = new CurrentUserResponse;
-  updateRequest:UpdateUserRequest = new UpdateUserRequest;
+  updateRequest: UpdateUserRequest = new UpdateUserRequest;
   imagePreview: any
   profilePhoto: any
   ngOnInit(): void {
@@ -27,9 +27,15 @@ export class UpdateUserComponent implements OnInit {
   getCurrentUser() {
     this.login.loginUserData.subscribe({
       next: (data: any) => {
-        this.currentUser = data.message
-        this.changeCurrentUserResponseToUpdateUserReq(this.currentUser)
-        this.imagePreview = ApiRoutes.IMAGE_URL + this.currentUser.profilePhoto
+        if (data != null) {
+          this.setDataInObj(data.message);
+        } else {
+          this.login.getCurrentUser().subscribe({
+            next: data => {
+              this.setDataInObj(data.message)
+            }
+          })
+        }
       }
     })
   }
@@ -38,7 +44,7 @@ export class UpdateUserComponent implements OnInit {
     this.profilePhoto = event.target.files[0]
     this.updateRequest.profilePhoto = event.target.files[0]
     console.log(this.updateRequest.profilePhoto);
-    
+
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.onload = () => {
@@ -52,42 +58,48 @@ export class UpdateUserComponent implements OnInit {
   updateUserProfile() {
 
     if (
-      this.updateRequest.email === "" || 
+      this.updateRequest.email === "" ||
       this.updateRequest.firstName === "" || this.updateRequest.lastName === "" ||
-      this.updateRequest.tempAddress === ""|| this.updateRequest.mob === ""
+      this.updateRequest.tempAddress === "" || this.updateRequest.mob === ""
     ) {
-      this.snack.open("!! cheak all fields","👍ok",{
-        direction:'ltr',
-        duration:3000
+      this.snack.open("!! cheak all fields", "👍ok", {
+        direction: 'ltr',
+        duration: 3000
       });
       return;
     }
-    
-    this.login.updateUser(this.currentUser.userId,this.updateRequest).subscribe({
-      next:(data:any)=>{
+
+    this.login.updateUser(this.currentUser.userId, this.updateRequest).subscribe({
+      next: (data: any) => {
         console.log(data);
+        this.login.currentUser.next(data);
         Toasts.fire({
-          icon:'success',
-          text:data.message,
-          timer:3000
-        }).then(e=>{
+          icon: 'success',
+          text: data.message,
+          timer: 3000
+        }).then(e => {
           this.router.navigate([this.login.getUserRole()?.toLowerCase()])
         })
-        
-      },error:err=>{
+
+      }, error: err => {
         console.log(err);
-        
+
       }
     })
   }
 
-  changeCurrentUserResponseToUpdateUserReq(currUser:CurrentUserResponse)
-  {
+  changeCurrentUserResponseToUpdateUserReq(currUser: CurrentUserResponse) {
     this.updateRequest.userId = currUser.userId
     this.updateRequest.firstName = currUser.firstName
     this.updateRequest.lastName = currUser.lastName
     this.updateRequest.email = currUser.email
     this.updateRequest.mob = currUser.mob
     this.updateRequest.tempAddress = currUser.tempAddress
+  }
+
+  setDataInObj(data: any) {
+    this.currentUser = data
+    this.changeCurrentUserResponseToUpdateUserReq(this.currentUser)
+    this.imagePreview = ApiRoutes.IMAGE_URL + this.currentUser.profilePhoto
   }
 }

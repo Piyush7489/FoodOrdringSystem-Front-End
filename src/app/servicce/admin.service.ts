@@ -64,4 +64,14 @@ export class AdminService {
   {
     return this.http.get(ApiRoutes.GET_REST_OF_OWNER_BY_OWNER_ID+`${ownerId}`)
   }
+
+  public getRestStausCount()
+  {
+    return this.http.get(ApiRoutes.REST_STAUS_COUNT)
+  }
+
+  public getCOuntOfBoyAndCustomer()
+  {
+    return this.http.get(ApiRoutes.COUNT_BOY_AND_CUSTOMER)
+  }
 }

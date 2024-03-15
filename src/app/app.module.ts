@@ -55,6 +55,7 @@ import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.compo
 import { MatSelectModule } from '@angular/material/select';
 import { SliceWordPipe } from './custom-pipe/slice-word.pipe';
 import { ViewRestaurantByOwnerComponent } from './owner/view-restaurant-by-owner/view-restaurant-by-owner.component';
+import { StatusCountPipe } from './custom-pipe/status-count.pipe';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ViewRestaurantByOwnerComponent } from './owner/view-restaurant-by-owner
     ViewOwnersComponent,
     SliceWordPipe,
     ViewRestaurantByOwnerComponent,
+    StatusCountPipe,
   ],
   imports: [
     BrowserModule,
