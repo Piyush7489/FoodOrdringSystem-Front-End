@@ -74,4 +74,9 @@ export class AdminService {
   {
     return this.http.get(ApiRoutes.COUNT_BOY_AND_CUSTOMER)
   }
+
+  public getListOfBoy(pageNo:any,itemPerPage:any)
+  {
+    return this.http.get(ApiRoutes.LIST_OF_BOY+`?page=${pageNo}&size=${itemPerPage}`);
+  }
 }

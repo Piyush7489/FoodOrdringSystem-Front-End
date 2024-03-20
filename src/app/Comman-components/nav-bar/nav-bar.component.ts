@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class NavBarComponent implements OnInit {
   public isLoggedIn = false;
   constructor(public login: AuthService, private router: Router) { }
-  currentUser: CurrentUserResponse = new CurrentUserResponse;
+  currentUser: CurrentUserResponse = new CurrentUserResponse();
   imagePreview: any;
   userRole: any
   ngOnInit(): void {
@@ -27,6 +27,8 @@ export class NavBarComponent implements OnInit {
   getCurrentUser() {
     this.login.loginUserData.subscribe({
       next: (data: any) => {
+        console.log(data);
+        
         if (data != null) {
           console.log("IF");
 
@@ -35,13 +37,13 @@ export class NavBarComponent implements OnInit {
         else {
           console.log("ELSE");
 
-          this.login.getCurrentUser().subscribe({
-            next: data => {
-              console.log(data.message);
-              this.setDataInCurrentUser(data.message)
+          // this.login.getCurrentUser().subscribe({
+          //   next: data => {
+          //     console.log(data.message);
+          //     this.setDataInCurrentUser(data.message)
 
-            }
-          })
+          //   }
+          // })
         }
 
 
