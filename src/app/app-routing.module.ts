@@ -17,7 +17,6 @@ import { otpGuard } from './guard/otp.guard';
 import { authGuard } from './guard/auth.guard';
 import { ForgetPasswordComponent } from './Comman-components/forget-password/forget-password.component';
 import { HOMEComponent } from './Comman-components/home/home.component';
-import { BoydocumentComponent } from './boy-document-registration/boydocument/boydocument.component';
 import { ownerGuard } from './guard/owner-guard.guard';
 import { OenerPanelMaincontentComponent } from './owner/oener-panel-maincontent/oener-panel-maincontent.component';
 import { RegisterRestaurantComponent } from './owner/restaurant-managment/register-restaurant/register-restaurant.component';
@@ -31,6 +30,9 @@ import { ViewCustomerComponent } from './admin-panel/view-customer/view-customer
 import { ViewOwnersComponent } from './admin-panel/view-owners/view-owners.component';
 import { UpdateUserComponent } from './Comman-components/update-user/update-user.component';
 import { ViewRestaurantByOwnerComponent } from './owner/view-restaurant-by-owner/view-restaurant-by-owner.component';
+import { BoydocumentComponent } from './delivery-boy-panel/boy-document-registration/boydocument/boydocument.component';
+import { ViewDeliveryBoyComponent } from './admin-panel/view-delivery-boy/view-delivery-boy.component';
+import { ViewReviewComponent } from './admin-panel/view-review/view-review.component';
 
 
 
@@ -57,6 +59,8 @@ const routes: Routes = [
     {path:'customer-list',component:ViewCustomerComponent},
     {path:'owner-list',component:ViewOwnersComponent},
     {path:'update-user',component:UpdateUserComponent},
+    {path:'boy-list',component:ViewDeliveryBoyComponent},
+    {path:'view-review',component:ViewReviewComponent},
   ]},
   {path:'owner',component:OwnerportalComponent,
    canActivate:[ownerGuard],

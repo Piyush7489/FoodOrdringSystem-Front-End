@@ -38,7 +38,6 @@ import { OwnerSideBarComponent } from './owner/owner-side-bar/owner-side-bar.com
 import { UpdateUserComponent } from './Comman-components/update-user/update-user.component';
 import { ForgetPasswordComponent } from './Comman-components/forget-password/forget-password.component';
 import { HOMEComponent } from './Comman-components/home/home.component';
-import { BoydocumentComponent } from './boy-document-registration/boydocument/boydocument.component';
 import { PaginationComponent } from './Comman-components/pagination/pagination/pagination.component';
 import { OenerPanelMaincontentComponent } from './owner/oener-panel-maincontent/oener-panel-maincontent.component';
 import { ownerGuard } from './guard/owner-guard.guard';
@@ -56,6 +55,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { SliceWordPipe } from './custom-pipe/slice-word.pipe';
 import { ViewRestaurantByOwnerComponent } from './owner/view-restaurant-by-owner/view-restaurant-by-owner.component';
 import { StatusCountPipe } from './custom-pipe/status-count.pipe';
+import { BoydocumentComponent } from './delivery-boy-panel/boy-document-registration/boydocument/boydocument.component';
+import { ViewDeliveryBoyComponent } from './admin-panel/view-delivery-boy/view-delivery-boy.component';
+import { ViewReviewComponent } from './admin-panel/view-review/view-review.component';
+import { DateAgoPipePipe } from './custom-pipe/date-ago-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,6 @@ import { StatusCountPipe } from './custom-pipe/status-count.pipe';
     UpdateUserComponent,
     ForgetPasswordComponent,
     HOMEComponent,
-    BoydocumentComponent,
     PaginationComponent,
     OenerPanelMaincontentComponent,
     RegisterRestaurantComponent,
@@ -91,6 +93,10 @@ import { StatusCountPipe } from './custom-pipe/status-count.pipe';
     SliceWordPipe,
     ViewRestaurantByOwnerComponent,
     StatusCountPipe,
+    BoydocumentComponent,
+    ViewDeliveryBoyComponent,
+    ViewReviewComponent,
+    DateAgoPipePipe
   ],
   imports: [
     BrowserModule,

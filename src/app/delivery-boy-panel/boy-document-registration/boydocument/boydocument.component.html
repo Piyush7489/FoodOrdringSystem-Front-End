@@ -1,0 +1,62 @@
+<div class="container">
+	<h1>Create Your Profile</h1>
+
+
+	<h2>Upload Your Documents <br><span class="span-note">Upload All Documents to start earning</span></h2>
+	<mat-card>
+		<h2 class="h2-identity">1. Identity Proof <br>
+			<span class="span-note">Choose One</span>
+		</h2>
+		<div class="row">
+			<div class="row">
+				<div class="col-md-7">
+					<input type="radio" name="identity-radio">
+					<span class="identity-type">Aadhar Card</span>
+				</div>
+				<div class="col-md-5">
+					<input type="radio" name="identity-radio">
+					<span class="identity-type">Voter Id Card</span>
+				</div>
+				
+			</div>
+			<div class="col-md-5 mt-4">
+				<!-- <input type="file">
+					<span class="identity-type">Front Side</span> -->
+
+				<div class="card">
+					<!-- <img src="" alt="" style="width:100%"> -->
+					<button class="material-symbols-outlined" type="file">arrow_upward</button>
+					<span class="identity-type" > Front Side</span>
+					
+				</div>
+			</div>
+			<div class="col-md-5 mt-4">
+				<input type="file">
+				<span class="identity-type">Back Side</span>
+			</div>
+		</div>
+	</mat-card>
+	<!-- <lable for=""></lable>
+		<input type="text">
+		<lable></lable>
+		<input type="text">
+		<lable></lable>
+		<input type="text"> -->
+</div>
+
+<div class="container">
+
+	<h1>Create Your Profile</h1>
+
+	<form>
+		<label for="accountNumber">Account Number:</label><br>
+		<input type="text" id="accountNumber" name="accountNumber" required><br>
+		<label for="confirmAccountNumber">Re-enter Account Number:</label><br>
+		<input type="text" id="confirmAccountNumber" name="confirmAccountNumber" required><br>
+		<label for="bankName">Bank Name:</label><br>
+		<input type="text" id="bankName" name="bankName" required><br>
+		<label for="ifscCode">IFSC Code:</label><br>
+		<input type="text" id="ifscCode" name="ifscCode" required><br>
+		<input type="submit" value="Verify Bank Details">
+	</form>
+</div>

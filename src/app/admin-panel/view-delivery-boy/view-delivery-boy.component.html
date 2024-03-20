@@ -1,0 +1,44 @@
+<div class="container" id="content" >
+    
+    <table class="table" >
+        <thead>
+            <tr>
+                <th scope="col">S.no</th>
+                <th scope="col">Id</th>
+                <th scope="col">Profile</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mob no.</th>
+                <th scope="col">Join at</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr  *ngFor="let u of PaginatedData">
+                <th>#</th>
+                <th scope="row">{{u.userId}}</th>
+                <td > 
+                    <div class="profile-picture">
+                    <img [src]='imageUrl+u.profilePhoto'alt="Profile Picture">
+                   </div>
+               </td>
+                <td>{{u.firstName}} {{u.lastName}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.mob}}</td>
+                <td>{{u.createAt}}</td> 
+                <td>{{u.tempAddress}}</td> 
+                <td>
+                  <div class="form-check form-switch">
+                    <!-- <input class="form-check-input" type="checkbox" id="toggleSwitch" >
+                    <label class="form-check-label" for="toggleSwitch"> -->
+                       {{ u.isActive ? 'Active' : 'Inactive' }} 
+                    <!-- </label> -->
+                  </div>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <app-pagination [totalItem]="length" [itemPerPage]="itemPerPage" [currentpage]="currentpage" (onClick)="changePage($event)"></app-pagination>
+</div>
